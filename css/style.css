@@ -2,7 +2,7 @@
     font-family: "font";
     font-weight: normal;
     font-style: normal;
-    src: url("/assets/Relish\ Pro\ Bold.ttf");
+    src: url("../assets/CrimsonText-Regular.ttf");
 }
 
 body {
@@ -12,7 +12,7 @@ body {
     background-color: #85dbfe;
     background-size: cover;
     background-position: center;
-    font-family: sans-serif;
+    font-family: "font", serif;
 }
 
 .headerdesk {
@@ -49,7 +49,7 @@ body {
     height: 100%;
     display: table;
     float: left;
-    padding: 0px 20px;
+    padding: 0 20px;
     background-color: #ff63ca;
 }
 
@@ -57,9 +57,8 @@ body {
     display: table-cell;
     vertical-align: middle;
     height: 100%;
-    color: #000;
-    font-size: 30;
-    font-family: font;
+    font-size: 13pt;
+    font-family: "font", serif;
     color: #fff;
 
 }
@@ -109,10 +108,10 @@ H3 {
 .formbox p {
     margin: 0;
     padding: 0;
-    /* font-weight: bold; */
+     font-weight: bold;
     text-align: left;
-    TEXT-INDENT: 0em;
-    font-size: 15;
+    TEXT-INDENT: 0;
+    /*font-size: 11pt;*/
     /* font-family: sans-serif; */
 }
 
@@ -133,25 +132,24 @@ H3 {
 }
 
 .formbox input[type="submit"] {
-    width: 100%;
+    width: 50%;
     margin-bottom: 20px;
     border: none;
     outline: none;
     height: 40px;
-    background: #ff63ca;
-    color: #fff;
-    font-family: font;
-    font-size: 18;
+    background: #fec2fb;
+    color: #000;
+    font-size: 12pt;
+    font-family: "font", serif;
     border-radius: 20px;
     text-align: center;
 }
 
 
-.formbox  input[type="submit"]:hover {
+.formbox input[type="submit"]:hover {
     cursor: pointer;
-    background: #ff00a8;
+    background: #ff63ca;
     color: #fff;
-
 }
 
 
@@ -166,7 +164,7 @@ H3 {
     outline: none;
     color: #000;
     font-size: 16px;
-    font-family: font;
+    font-family: "font", serif;
 }
 
 
@@ -189,11 +187,11 @@ H3 {
     }
 
     p {
-        font-size: 13;
+        font-size: 13pt;
         margin-left: 1.5%;
         margin-right: 1.5%;
         text-align: justify;
-        font-family: "font";
+        font-family: "font", serif;
     }
 
     .contentdesk {

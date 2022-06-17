@@ -4,38 +4,21 @@
 <head>
     <title>About us</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body>
-    <div class="headerdesk">
-        <div class="logo_header">
-            <img src="/assets/logo.png" height="100px">
-        </div>
-        <div class="inner_header">
-            <ul class="navigation">
-                <a href="/html/main.html">
-                    <li>Formular</li>
-                </a>
-                <a href="/html/products.html">
-                    <li>Lista produselor</li>
-                </a>
-                <a href="/html/about_us.html">
-                    <li>Despre noi</li>
-                </a>
-                <a href="/html/profile.html">
-                    <li>Profil</li>
-                </a>
-            </ul>
-        </div>
-    </div>
+
+    <?php
+    include_once 'header.php';
+    ?>
     <div class="contentdesk">
         <h3>Despre noi</h3>
         <table>
             <tbody>
                 <tr>
                     <td width="30%">
-                        <center><img class="sticla" src="/assets/avatar.svg" width="30%"></center>
+                        <div style="text-align: center;"><img class="sticla" src="./assets/avatar.svg" width="30%" alt="avatar"></div>
                     </td>
                     <td>
 
@@ -63,7 +46,7 @@
     <div class="contentmob">
         <h3>Despre noi</h3>
         <p>&#160;</p>
-        <center><img class="sticla" src="/assets/avatar.svg" width="15%"></center>
+        <center><img class="sticla" src="./assets/avatar.svg" width="15%"></center>
         <p>&#160;</p>
         <p>Care este povestea noastră?</p>
         <p>Suntem doi tineri foarte pasionaţi de informatică, <i>în special</i> HTML şi CSS, care au ales un

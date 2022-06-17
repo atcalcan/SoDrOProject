@@ -1,9 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(/assets/bkg.svg);
     background-size: cover;
-    background-position: center;
+    background: url(../assets/bkg.svg) center;
     font-family: sans-serif;
 }
 
@@ -15,7 +14,7 @@ body {
     top: 50%;
     left: 50%;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -35%);
     box-sizing: border-box;
     padding: 70px 30px;
 }
@@ -29,7 +28,7 @@ body {
     top: 50%;
     left: 50%;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
     box-sizing: border-box;
     padding: 70px 30px;
 }
@@ -97,7 +96,8 @@ input[type="submit"] {
     height: 40px;
     background: #fec2fb;
     color: #000;
-    font-size: 18;
+    font-size: 12pt;
+    font-family: "font", serif;
     border-radius: 20px;
     text-align: center;
 }
@@ -107,7 +107,6 @@ input[type="submit"]:hover {
     cursor: pointer;
     background: #ff63ca;
     color: #fff;
-
 }
 
 a {
