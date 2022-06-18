@@ -15,6 +15,10 @@
     <div class="contentdesk">
 
     </div>
+    <?php
+    // phpinfo();
+    include_once 'footer.php';
+    ?>
 </body>
 
 </html>

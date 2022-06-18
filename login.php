@@ -30,7 +30,7 @@
                     echo '<p style="color:red; text-align: center; font-size: 70%">Numele de utilizator trebuie să conţină doar litere şi cifre.</p>';
                 }
                 if ($_GET["error"] == "notfound") {
-                    echo '<p style="color:red; text-align: center; font-size: 80%">Nu am reuşit să găsim utilizatorul.</p>';
+                    echo '<p style="color:red; text-align: center; font-size: 80%">Numele de utilizator sau parola sunt greșite.</p>';
                 }
                 if ($_GET["error"] == "none") {
                     echo '<p style="color:red; text-align: center; font-size: 80%">Te-ai înregistrat cu succes!</p>';

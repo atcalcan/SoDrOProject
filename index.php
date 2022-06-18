@@ -27,7 +27,7 @@
                 <input name="lowcal" type="checkbox">
                 <p>4. Preferi băuturi care conţin lapte?</p>
                 <input name="milk" type="checkbox">
-                <p>5. Preferi băuturi cu cofeină?</p>
+                <p>5. Preferi băuturi fără cofeină?</p>
                 <input name="cofe" type="checkbox">
                 <p>6. Ce gust ai prefera sa aibă băutura?</p>
                 <div style="text-align: center;">
@@ -45,6 +45,10 @@
             </form>
         </div>
     </div>
+    <?php
+    // phpinfo();
+    include_once 'footer.php';
+    ?>
 </body>
 
 </html>

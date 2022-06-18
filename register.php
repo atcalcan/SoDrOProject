@@ -43,7 +43,7 @@
                     echo '<p style="color:red; text-align: center; font-size: 80%">Numele de utilizator există deja.</p>';
                 }
                 if ($_GET["error"] == "none") {
-                    echo '<p style="color:red; text-align: center; font-size: 80%">Te-ai înregistrat cu succes!</p>';
+                    echo '<p style="color:#85dbfe; text-align: center; font-size: 80%">Te-ai înregistrat cu succes!</p>';
                 }
             }
             ?>
@@ -55,6 +55,10 @@
 
 
     </div>
+    <?php
+    // phpinfo();
+    include_once 'footer.php';
+    ?>
 </body>
 
 </html>

@@ -61,6 +61,10 @@
             suntem
             siguri că produsul final ne va marca tuturor viaţa în moduri creative şi neprevăzute.</p>
     </div>
+    <?php
+    // phpinfo();
+    include_once 'footer.php';
+    ?>
 </body>
 
 </html>
