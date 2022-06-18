@@ -64,20 +64,6 @@ function userRpt($conn, $user, $email)
     }
 }
 
-function userNo($conn, $user)
-{
-    $cmd = "SELECT * FROM USERS where username = ':USER'";
-    $stid = oci_parse($conn, $cmd);
-    oci_bind_by_name($cmd, ':USER', $user);
-    oci_execute($stid);
-    $row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
-    if ($row == null) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 function createUser($conn, $email, $user, $pwd)
 {
     $stid = pg_query($conn, "SELECT max(id) FROM USERS");
@@ -102,8 +88,7 @@ function loginUser($conn, $user, $pwd)
             session_start();
             $_SESSION['user'] = $user;
             header("location: ../index.php");
-        }
-        else{
+        } else {
             header("location: ../login.php?error=notfound");
             exit;
         }
@@ -111,6 +96,33 @@ function loginUser($conn, $user, $pwd)
         header("location: ../login.php?error=notfound");
         exit;
     }
+}
+
+
+function numberOfUsers($conn)
+{
+    $cmd = "SELECT COUNT(*) as number FROM USERS";
+    $stid = pg_query($conn, $cmd);
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    return $row["number"];
+}
+
+
+function numberOfProducts($conn)
+{
+    $cmd = "SELECT COUNT(*) as number FROM BEVERAGES";
+    $stid = pg_query($conn, $cmd);
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    return $row["number"];
+}
+
+
+function getEmail($conn, $user)
+{
+    $cmd = "SELECT email FROM USERS where username = '$user'";
+    $stid = pg_query($conn, $cmd);
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    return $row["email"];
 }
 
 //function receivedReteta($nume, $vegetarian, $vegan, $descriere, $string, $conn)

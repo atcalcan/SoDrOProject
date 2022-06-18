@@ -7,18 +7,16 @@ if (isset($_POST["submit"])) {
     $descriere = $_POST["descriere"];
     $string = $_POST["string"];
 
-    if ($vegetarian == "1"){
+    if ($vegetarian == "1") {
         $vg1 = 'Y';
-    }
-    else {
+    } else {
         $vg1 = 'N';
 
     }
 
-    if ($vegan == "1"){
+    if ($vegan == "1") {
         $vg2 = 'Y';
-    }
-    else {
+    } else {
         $vg2 = 'N';
 
     }
@@ -31,7 +29,7 @@ if (isset($_POST["submit"])) {
         exit();
     }
 
-    
+
     receivedReteta($nume, $vg1, $vg2, $descriere, $string, $conn);
 } else {
     header("location: ../admin.php");
