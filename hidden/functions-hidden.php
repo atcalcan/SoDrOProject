@@ -64,6 +64,18 @@ function userRpt($conn, $user, $email)
     }
 }
 
+function emailRpt($conn, $email)
+{
+    $cmd = "SELECT * FROM USERS where email = '$email'";
+    $stid = pg_query($conn, $cmd);
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    if ($row) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function createUser($conn, $email, $user, $pwd)
 {
     $stid = pg_query($conn, "SELECT max(id) FROM USERS");
@@ -71,7 +83,7 @@ function createUser($conn, $email, $user, $pwd)
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
     $stmt = "INSERT INTO USERS VALUES ($row[0] + 1, '$user', '$hashedPwd', '$email')";
-    $stid = pg_query($conn, $stmt);
+    pg_query($conn, $stmt);
 
     header("location: ../register.php?error=none");
     exit();
@@ -96,6 +108,36 @@ function loginUser($conn, $user, $pwd)
         header("location: ../login.php?error=notfound");
         exit;
     }
+}
+
+function wrongPwd($conn, $user, $pwd): bool
+{
+    $stid = pg_query($conn, "SELECT passwd FROM USERS where username = '$user'");
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    if (password_verify($pwd, $row["passwd"])) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+function updateEmail($conn, $newAdress, $user)
+{
+    $stmt = "UPDATE USERS SET email = '$newAdress' WHERE username = '$user'";
+    pg_query($conn, $stmt);
+    header("location: ../profile.php?action=changemail&error=none");
+    exit;
+}
+
+
+function updatePwd($conn, $pwd, $user)
+{
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $stmt = "UPDATE USERS SET passwd = '$hashedPwd' WHERE username = '$user'";
+    pg_query($conn, $stmt);
+    header("location: ../profile.php?action=changepwd&error=none");
+    exit;
 }
 
 
@@ -174,12 +216,12 @@ function allProducts($conn)
         $result = $result . '<td>' . $row["aroma"] . '</td>';
         $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">Link</a></td>';
 
-        $result = $result . '</tr>';
+        $result = $result . '</tr>
+';
         $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     }
-    $result = $result . '</tbody>
+    return $result . '</tbody>
 </table>';
-    return $result;
 }
 
 //function receivedReteta($nume, $vegetarian, $vegan, $descriere, $string, $conn)

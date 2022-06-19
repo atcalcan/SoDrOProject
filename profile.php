@@ -17,47 +17,110 @@ include_once 'header.php';
     <?php
     require_once './hidden/dbh-hidden.php';
     require_once './hidden/functions-hidden.php';
-
-    echo '<table style="margin-left: auto; margin-right: auto;">
-<tbody>
-<tr>
-<td width="30%">';
-    // Profile Pic
-    echo '<div style=" text-align: center;"><img style="border-radius: 50%;" class="profile" src="https://www.ssrl-uark.com/wp-content/uploads/2014/06/no-profile-image.png" width="100px" alt="profile"></div>';
-    echo '</td>
-<td>
-<table style="margin-left: auto; margin-right: auto;" width="100%">
-<tbody>
-<tr>
-<td>';
-    echo '<p style="text-indent: 0"><b>Nume de utilizator: ' . $_SESSION['user'] . '</b></p>';
-    echo '</td>
-</tr>
-<tr>
-<td>';
-    echo '<p style="text-indent: 0">Email: ' . getEmail($conn, $_SESSION['user']) . '</p>';
-    echo '</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr>
-<td colspan="2">';
-    echo '<div class="formbox">
-<form action="./hidden/profileHidden.php" method="post">
-            <div style="text-align: center;">';
-    echo '<div><input name="changeEmail" type="submit" value="Schimă emailul"></div>';
-    echo '<div><input name="changePwd" type="submit" value="Schimă parola"></div>';
-    echo '</div>
-        </form></div>';
-    echo '</td>
-</tr>
-</tbody>
-</table>';
-
     ?>
+
+    <table style="margin-left: auto; margin-right: auto;">
+        <tbody>
+        <tr>
+            <td width="30%">
+                <?php
+                echo '<div style=" text-align: center;"><img style="border-radius: 50%;" class="profile" src="https://www.ssrl-uark.com/wp-content/uploads/2014/06/no-profile-image.png" width="100px" alt="profile"></div>';
+                ?>
+            </td>
+            <td>
+                <table style="margin-left: auto; margin-right: auto;" width="100%">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <?php
+                            echo '<p style="text-indent: 0"><b>Nume de utilizator: ' . $_SESSION['user'] . '</b></p>';
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php
+                            echo '<p style="text-indent: 0">Email: ' . getEmail($conn, $_SESSION['user']) . '</p>';
+                            ?>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="formbox2">
+                    <form action="./hidden/profile-hidden.php" method="post">
+                        <div style="text-align: center;">
+                            <div><input name="changeEmail" type="submit" value="Schimă emailul"></div>
+                            <div><input name="changePwd" type="submit" value="Schimă parola"></div>
+                        </div>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <?php
+    if ($_GET["action"] == "changemail") {
+        if (isset($_GET["error"])) {
+            if ($_GET["error"] == "invalidemail") {
+                echo '<p style="color:red; text-align: center; font-size: 80%">Adresa de mail este invalidă.</p>';
+            } else if ($_GET["error"] == "differentmails") {
+                echo '<p style="color:red; text-align: center; font-size: 80%">Adresele introduse nu se potrivesc.</p>';
+            } else if ($_GET["error"] == "none") {
+                echo '<p style="color:#0072a0; text-align: center;">Am schimbat cu succes adresa ta de email.</p>';
+            }
+        }
+        echo '<div class="formbox2">
+                    <form action="./hidden/change-email-hidden.php" method="post">
+                        <p>Care este noua adresă de email?</p>
+                        <input name="newAdress1" type="email" placeholder="Introdu noua adresă">
+                        <input name="newAdress2" type="email" placeholder="Repetă noua adresă">
+                        <div style="text-align: center;">
+                        <input name="changeEmailSubmit" type="submit" value="Submit">
+                        <input name="user" type="hidden" value="';
+        echo $_SESSION['user'];
+        echo '">
+                        </div>
+                    </form>
+               </div>';
+    }
+    ?>
+
+    <?php
+    if ($_GET["action"] == "changepwd") {
+        if (isset($_GET["error"])) {
+            if ($_GET["error"] == "wrongpwd") {
+                echo '<p style="color:red; text-align: center; font-size: 80%">Parola curentă nu este corectă.</p>';
+            } else if ($_GET["error"] == "differentpwds") {
+                echo '<p style="color:red; text-align: center; font-size: 80%">Noile parole introduse nu se potrivesc.</p>';
+            } else if ($_GET["error"] == "none") {
+                echo '<p style="color:#0072a0; text-align: center;">Am schimbat cu succes parola ta.</p>';
+            }
+        }
+        echo '<div class="formbox2">
+                    <form action="./hidden/change-pwd-hidden.php" method="post">
+                        <p>Care este parola ta?</p>
+                        <input name="oldPwd" type="password" placeholder="Introdu parola ta curentă">
+                        <p>Care este noua ta parolă?</p>
+                        <input name="newPwd1" type="password" placeholder="Introdu noua parolă">
+                        <input name="newPwd2" type="password" placeholder="Repetă noua parolă">
+                        <div style="text-align: center;">
+                        <input name="changePwdSubmit" type="submit" value="Submit">
+                        <input name="user" type="hidden" value="';
+        echo $_SESSION['user'];
+        echo '">
+                        </div>
+                    </form>
+               </div>';
+    }
+    ?>
+
 </div>
+<p>&#160;</p>
 <?php
 // phpinfo();
 include_once 'footer.php';

@@ -15,7 +15,7 @@
 include_once 'header.php';
 ?>
 <div class="contentdesk">
-    <div class="formbox">
+    <div class="formbox2">
         <h3>Formular de preferinţe</h3>
         <form action="./hidden/index-hidden.php" method="post">
             <p>1. Preferi b&#259;uturi acidulate?</p>

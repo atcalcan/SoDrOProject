@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "fontNav";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../assets/Relish-Pro-Bold.ttf");
+}
+
+.headerdesk {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    background-color: #ff63ca;
+}
+
+.inner_header {
+    width: 60%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    float: right;
+    /* background-color: aqua; */
+}
+
+.logo_header {
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #878787;
+    text-align: center;
+}
+
+.navigation {
+    float: right;
+    height: 100%;
+    margin: 0;
+
+}
+
+.navigation a {
+    text-decoration: none;
+    height: 100%;
+    display: table;
+    float: left;
+    padding: 0 20px;
+    background-color: #ff63ca;
+}
+
+.navigation a li {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    font-size: 13pt;
+    font-family: "fontNav", serif;
+    color: #fff;
+
+}
+
+.navigation a:hover {
+    background-color: #ff00a8;
+
+}
+
+@media screen and (max-device-width: 1280px) {
+    .headerdesk {
+        display: none;
+    }
+}

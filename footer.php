@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/header.css">
 </head>
 <div class="footer">
     <!--<footer>-->
     <p>SoDrO 2022; Alex Calcan, Cosmin Amăriucăi</p>
     <!--</footer>-->
 </div>
+</html>

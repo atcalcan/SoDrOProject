@@ -21,7 +21,6 @@ if (isset($_POST["submit"])) {
     //     header("location: ../login.php?error=nouser");
     //     exit();
     // }
-
     loginUser($conn, $user, $pwd);
 } else {
     header("location: ../login.php");

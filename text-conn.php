@@ -9,7 +9,7 @@ $dBName = "Proiect";
 // echo PHP_INT_SIZE;
 //phpinfo();
 echo '<p>';
-echo hash_hmac("admin", c1isvFdxMDdmjOlvxpecFw);
+//echo hash_hmac("admin", c1isvFdxMDdmjOlvxpecFw);
 
 
 echo '</p><p>';

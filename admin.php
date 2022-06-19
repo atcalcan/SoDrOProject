@@ -28,6 +28,8 @@ include_once 'header.php';
     </div>
 </div>
 
+<p>&#160;</p>
+
 <?php
 // phpinfo();
 include_once 'footer.php';

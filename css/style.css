@@ -15,68 +15,6 @@ body {
     font-family: "font", serif;
 }
 
-.headerdesk {
-    height: 100px;
-    width: 100%;
-    display: flex;
-    background-color: #ff63ca;
-}
-
-.inner_header {
-    width: 60%;
-    height: 100%;
-    display: block;
-    margin: 0 auto;
-    float: right;
-    /* background-color: aqua; */
-}
-
-.logo_header {
-    height: 60px;
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: #878787;
-    text-align: center;
-}
-
-.navigation {
-    float: right;
-    height: 100%;
-    margin: 0;
-
-}
-
-.navigation a {
-    text-decoration: none;
-    height: 100%;
-    display: table;
-    float: left;
-    padding: 0 20px;
-    background-color: #ff63ca;
-}
-
-.navigation a li {
-    display: table-cell;
-    vertical-align: middle;
-    height: 100%;
-    font-size: 13pt;
-    font-family: "font", serif;
-    color: #fff;
-
-}
-
-.navigation a:hover {
-    background-color: #ff00a8;
-
-}
-
 .contentdesk {
     background-color: #fff;
     width: 80%;
@@ -115,11 +53,11 @@ H3 {
     display: none;
 }
 
-.formbox {
+.formbox2 {
     padding: 10px 20px;
 }
 
-.formbox p {
+.formbox2 p {
     margin: 0;
     padding: 0;
     font-weight: bold;
@@ -129,13 +67,15 @@ H3 {
     /* font-family: sans-serif; */
 }
 
-.formbox input {
+.formbox2 input {
     width: 100%;
     margin-bottom: 20px;
 }
 
 
-.formbox input[type="text"] {
+.formbox2 input[type="text"],
+input[type="password"],
+input[type="email"] {
     border: none;
     border-bottom: 1px solid #000;
     background: transparent;
@@ -145,7 +85,7 @@ H3 {
     font-size: 16px;
 }
 
-.formbox input[type="submit"] {
+.formbox2 input[type="submit"] {
     width: 50%;
     margin-bottom: 20px;
     border: none;
@@ -160,14 +100,14 @@ H3 {
 }
 
 
-.formbox input[type="submit"]:hover {
+.formbox2 input[type="submit"]:hover {
     cursor: pointer;
     background: #ff63ca;
     color: #fff;
 }
 
 
-.formbox select {
+.formbox2 select {
     width: 100%;
     height: max-content;
     margin-top: 20px;
@@ -193,10 +133,6 @@ H3 {
         background-position: center;
         font-family: sans-serif;
 
-    }
-
-    .headerdesk {
-        display: none;
     }
 
     p {

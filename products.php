@@ -19,19 +19,6 @@ include_once 'header.php';
         require_once './hidden/functions-hidden.php';
 
         echo allProducts($conn);
-
-        // $s = oci_parse($conn, "select retete.nume, retete.vegetarian, retete.vegan, retete.descriere, ingrediente.nume, ingrediente.cantitate from retete join ingrediente on retete.id=ingrediente.id group by retete.id, retete.nume");
-
-        // $lista = '';
-
-        // $stmt = oci_parse($conn, "BEGIN afiseaza_retete(); END;");
-
-        // oci_bind_by_name($stmt, ':MSG', , 2000);
-
-        // oci_execute($stmt);
-
-        // $message is now populated with the output value
-        // echo $lista;
         ?>
     </div>
 

@@ -3,7 +3,14 @@ body {
     padding: 0;
     background-size: cover;
     background: url(../assets/bkg.svg) center;
-    font-family: sans-serif;
+    font-family: "font", sans-serif;
+}
+
+@font-face {
+    font-family: "font";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../assets/CrimsonText-Regular.ttf");
 }
 
 .loginbox {
@@ -63,20 +70,20 @@ h1 {
     font-size: 22px;
 }
 
-p {
+.formbox p {
     margin: 0;
     padding: 0;
     font-weight: bold;
     text-align: left;
 }
 
-input {
+.formbox input {
     width: 100%;
     margin-bottom: 20px;
 }
 
 
-input[type="text"],
+.formbox input[type="text"],
 input[type="password"],
 input[type="email"] {
     border: none;
@@ -88,7 +95,7 @@ input[type="email"] {
     font-size: 16px;
 }
 
-input[type="submit"] {
+.formbox input[type="submit"] {
     width: 100%;
     margin-bottom: 20px;
     border: none;
@@ -103,23 +110,23 @@ input[type="submit"] {
 }
 
 
-input[type="submit"]:hover {
+.formbox input[type="submit"]:hover {
     cursor: pointer;
     background: #ff63ca;
     color: #fff;
 }
 
-a {
+.formbox a {
     text-decoration: none;
     font-size: 14px;
     line-height: 20px;
     color: darkgrey;
 }
 
-a:hover {
+.formbox a:hover {
     color: #fff;
 }
 
-div {
+.formbox div {
     text-align: center;
 }
