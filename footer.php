@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <div class="footer">
-<!--<footer>-->
+    <!--<footer>-->
     <p>SoDrO 2022; Alex Calcan, Cosmin Amăriucăi</p>
-<!--</footer>-->
+    <!--</footer>-->
 </div>

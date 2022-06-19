@@ -97,6 +97,11 @@ body {
     TEXT-ALIGN: justify
 }
 
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
 H3 {
     FONT-SIZE: 16pt;
     MARGIN-LEFT: 36px;

@@ -24,7 +24,7 @@ function emptyInputLogin($user, $pwd)
 
 function invalidEmail($email)
 {
-    if (!preg_match("/^[a-zA-Z0-9]*(\@)[a-zA-Z0-9]*[\.(a-zA-Z0-9)*]+$/", $email)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
     } else {
         $result = false;
@@ -123,6 +123,63 @@ function getEmail($conn, $user)
     $stid = pg_query($conn, $cmd);
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     return $row["email"];
+}
+
+
+function allProducts($conn)
+{
+    $result = '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
+<tbody>
+<tr>
+<td style="width: 35%;">Nume</td>
+<td>Acidulat?</td>
+<td>Natural?</td>
+<td>kcal/100g</td>
+<td>Lapte?</td>
+<td>Cafeină/100g</td>
+<td>Gust</td>
+<td>Aromă</td>
+<td>Link</td>
+</tr>';
+    $cmd = "SELECT * FROM beverages";
+    $stid = pg_query($conn, $cmd);
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    while ($row) {
+        $result = $result . '<tr>';
+        $result = $result . '<td>' . $row["numeProdus"] . '</td>';
+        if ($row["acidulat"] == 't') {
+            $result = $result . '<td>✔</td>';
+        } else if ($row["acidulat"] == 'f') {
+            $result = $result . '<td>✖</td>';
+        } else {
+            $result = $result . '<td></td>';
+        }
+        if ($row["natural"] == 't') {
+            $result = $result . '<td>✔</td>';
+        } else if ($row["natural"] == 'f') {
+            $result = $result . '<td>✖</td>';
+        } else {
+            $result = $result . '<td></td>';
+        }
+        $result = $result . '<td>' . $row["calories"] . '</td>';
+        if ($row["milk"] == 't') {
+            $result = $result . '<td>✔</td>';
+        } else if ($row["milk"] == 'f') {
+            $result = $result . '<td>✖</td>';
+        } else {
+            $result = $result . '<td></td>';
+        }
+        $result = $result . '<td>' . $row["cof"] . '</td>';
+        $result = $result . '<td>' . $row["gust"] . '</td>';
+        $result = $result . '<td>' . $row["aroma"] . '</td>';
+        $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">Link</a></td>';
+
+        $result = $result . '</tr>';
+        $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    }
+    $result = $result . '</tbody>
+</table>';
+    return $result;
 }
 
 //function receivedReteta($nume, $vegetarian, $vegan, $descriere, $string, $conn)

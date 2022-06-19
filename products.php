@@ -16,6 +16,9 @@ include_once 'header.php';
     <div class="formbox">
         <?php
         require_once './hidden/dbh-hidden.php';
+        require_once './hidden/functions-hidden.php';
+
+        echo allProducts($conn);
 
         // $s = oci_parse($conn, "select retete.nume, retete.vegetarian, retete.vegan, retete.descriere, ingrediente.nume, ingrediente.cantitate from retete join ingrediente on retete.id=ingrediente.id group by retete.id, retete.nume");
 
