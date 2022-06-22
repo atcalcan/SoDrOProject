@@ -24,7 +24,7 @@ if (isset($_POST["changeEmailSubmit"])) {
     }
 
     if (isset($user)) {
-        updateEmail($conn, $newAddress, $user);
+        updateEmail($conn, $newAddress1, $user);
     } else {
         header("location: ../profile.php?action=changemail&error=idkuser");
         exit();
