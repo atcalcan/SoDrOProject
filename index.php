@@ -11,43 +11,44 @@
 
 <body>
 <?php
-// phpinfo();
 include_once 'header.php';
 ?>
 <div class="contentdesk">
     <div class="formbox2">
         <h3>Formular de preferinţe</h3>
         <form action="./hidden/index-hidden.php" method="post">
-            <p>1. Preferi b&#259;uturi acidulate?</p>
+            <label for="acid"><p>1. Preferi băuturi acidulate?</p></label>
             <input name="acid" type="checkbox">
-            <p>2. Preferi băuturi naturale?</p>
+            <label for="natural"><p>2. Preferi băuturi naturale?</p></label>
             <input name="natural" type="checkbox">
-            <p>3. Preferi băuturi cu conţinut caloric scăzut?</p>
+            <label for="lowcal"><p>3. Preferi băuturi cu conţinut caloric scăzut?</p></label>
             <input name="lowcal" type="checkbox">
-            <p>4. Preferi băuturi care conţin lapte?</p>
+            <label for="milk"><p>4. Preferi băuturi fără lapte?</p></label>
             <input name="milk" type="checkbox">
-            <p>5. Preferi băuturi fără cofeină?</p>
+            <label for="cofe"><p>5. Preferi băuturi fără cofeină?</p></label>
             <input name="cofe" type="checkbox">
-            <p>6. Ce gust ai prefera sa aibă băutura?</p>
+            <label for="gust"><p>6. Ce gust ai prefera sa aibă băutura?</p></label>
             <div style="text-align: center;">
                 <select name="gust" id="gust" multiple>
-                    <option value="dulce">Dulce</option>
-                    <option value="amar">Amar</option>
-                    <option value="acru">Acru</option>
+                    <option value="Dulce">Dulce</option>
+                    <option value="Amar">Amar</option>
+                    <option value="Acru">Acru</option>
                 </select>
             </div>
-            <p>7. Ce aromă ai prefera sa aibă băutura?</p>
+            <label for="aroma"><p>7. Ce aromă ai prefera sa aibă băutura?</p></label>
             <input name="aroma" type="text" placeholder="Introdu aroma dorită">
             <div style="text-align: center;">
-                <input name="submit" type="submit" value="Submit">
+                <input name="submitForm" type="submit" value="Submit">
             </div>
+            <?php
+            echo '<input name="user" type="hidden" value="' . $_SESSION['user'] . '">';
+            ?>
+
         </form>
     </div>
 </div>
 <?php
-// phpinfo();
 include_once 'footer.php';
 ?>
 </body>
-
 </html>

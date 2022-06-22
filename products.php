@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -14,11 +18,18 @@ include_once 'header.php';
 ?>
 <div class="contentdesk">
     <div class="formbox">
+        <h3>Lista produselor</h3>
         <?php
         require_once './hidden/dbh-hidden.php';
         require_once './hidden/functions-hidden.php';
 
-        echo allProducts($conn);
+        if (isset($_SESSION['acid']) | isset($_SESSION['natural']) | isset($_SESSION['lowcal']) | isset($_SESSION['milk']) | isset($_SESSION['cofe']) | isset($_SESSION['gust']) | isset($_SESSION['aroma'])) {
+//            echo '<p>'. $_SESSION['acid'] . ' ' . $_SESSION['natural'] . ' ' . $_SESSION['lowcal'] . ' ' . $_SESSION['milk'] . ' ' . $_SESSION['cofe'] . ' ' . $_SESSION['gust'] . ' ' . $_SESSION['aroma'] . '</p>';
+            echo selectedProductsDesk($conn, $_SESSION['acid'], $_SESSION['natural'], $_SESSION['lowcal'], $_SESSION['milk'], $_SESSION['cofe'], $_SESSION['gust'], $_SESSION['aroma']);
+        }
+        else {
+            echo allProductsDesk($conn);
+        }
         ?>
     </div>
 

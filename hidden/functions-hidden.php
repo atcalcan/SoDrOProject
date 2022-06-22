@@ -167,10 +167,8 @@ function getEmail($conn, $user)
     return $row["email"];
 }
 
-
-function allProducts($conn)
-{
-    $result = '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
+ function startTableDesk(){
+    return '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
 <td style="width: 35%;">Nume</td>
@@ -183,8 +181,55 @@ function allProducts($conn)
 <td>Aromă</td>
 <td>Link</td>
 </tr>';
+ }
+
+ function allProductsDesk($conn)
+{
+    $result = startTableDesk();
+//    echo '0';
     $cmd = "SELECT * FROM beverages";
-    $stid = pg_query($conn, $cmd);
+    $result = $result . getProductsDesk($conn, $cmd);
+    return $result . '</tbody>
+</table>';
+}
+
+ function selectedProductsDesk($conn, $acid, $natural, $lowcal, $milk, $cofe, $gust, $aroma)
+{
+//    echo '3';
+    $result = startTableDesk();
+    $cmd = "SELECT * FROM beverages";
+    if ($acid == 'on'){
+        $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY acidulat desc";
+    }
+    if ($natural == 'on'){
+        $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY natur desc";
+    }
+    if ($lowcal == 'on'){
+        $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY calories asc";
+    }
+    if ($milk == 'on'){
+        $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE NOT milk";
+    }
+    if ($cofe == 'on'){
+        $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE cof = '0'";
+    }
+    if ($gust == 'Dulce' | $gust == 'Amar' | $gust == 'Acru'){
+        $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE gust = '$gust'";
+    }
+    if ($aroma != ''){
+        $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE aroma like '%$gust%'";
+    }
+//    echo $cmd;
+    $result = $result . getProductsDesk($conn, $cmd);
+//    echo '1';
+    return $result . '</tbody>
+</table>';
+}
+
+function getProductsDesk($conn, $cmd)
+{
+    $result = '';
+    $stid = pg_query($conn, $cmd) or die('Error: ' . pg_last_error());
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     while ($row) {
         $result = $result . '<tr>';
@@ -196,9 +241,9 @@ function allProducts($conn)
         } else {
             $result = $result . '<td></td>';
         }
-        if ($row["natural"] == 't') {
+        if ($row["natur"] == 't') {
             $result = $result . '<td>✔</td>';
-        } else if ($row["natural"] == 'f') {
+        } else if ($row["natur"] == 'f') {
             $result = $result . '<td>✖</td>';
         } else {
             $result = $result . '<td></td>';
@@ -215,13 +260,11 @@ function allProducts($conn)
         $result = $result . '<td>' . $row["gust"] . '</td>';
         $result = $result . '<td>' . $row["aroma"] . '</td>';
         $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">Link</a></td>';
-
         $result = $result . '</tr>
 ';
         $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     }
-    return $result . '</tbody>
-</table>';
+    return $result;
 }
 
 //function receivedReteta($nume, $vegetarian, $vegan, $descriere, $string, $conn)
