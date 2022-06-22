@@ -8,11 +8,18 @@ if (isset($_POST["submitForm"])) {
 //    $cofe = $_POST["cofe"];
 //    $gust = $_POST["gust"];
 //    $aroma = $_POST["aroma"];
-    $user = $_POST["user"];
+//    $user = $_POST["user"];
 
 
     require_once './dbh-hidden.php';
     require_once './functions-hidden.php';
+    require_once './preference-functions-hidden.php';
+//    echo '1';
+
+    if (isset($_POST["user"])){
+        updatePreferences($conn, $_POST["user"], $_POST["acid"], $_POST["natural"], $_POST["lowcal"], $_POST["milk"], $_POST["cofe"], $_POST["gust"], $_POST["aroma"]);
+    }
+    echo '2';
 
     session_start();
 

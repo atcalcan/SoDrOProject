@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <title>Formular</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -41,11 +42,15 @@ include_once 'header.php';
                 <input name="submitForm" type="submit" value="Submit">
             </div>
             <?php
-            echo '<input name="user" type="hidden" value="' . $_SESSION['user'] . '">';
+            if (isset($_SESSION['user'])) {
+                echo '<input name="user" type="hidden" value="' . $_SESSION['user'] . '">';
+            }
             ?>
 
         </form>
     </div>
+
+    <p>&#160;</p>
 </div>
 <?php
 include_once 'footer.php';

@@ -15,6 +15,22 @@ body {
     font-family: "font", serif;
 }
 
+
+.contentdesk A:link {
+    COLOR: #000000; TEXT-DECORATION: none;
+}
+.contentdesk A:visited {
+    COLOR: #000000; TEXT-DECORATION: none;
+}
+.contentdesk A:hover {
+    COLOR: #ff63ca;
+    text-decoration: underline;
+}
+
+.contentdesk A:active {
+    text-decoration: underline;
+}
+
 .contentdesk {
     background-color: #fff;
     width: 80%;

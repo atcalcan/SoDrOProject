@@ -26,9 +26,9 @@ include_once 'header.php';
         // TODO
         ?>
     </div>
+    <p>&#160;</p>
 </div>
 
-<p>&#160;</p>
 
 <?php
 // phpinfo();

@@ -17,6 +17,7 @@ include_once 'header.php';
     <?php
     require_once './hidden/dbh-hidden.php';
     require_once './hidden/functions-hidden.php';
+    require_once './hidden/preference-functions-hidden.php';
     ?>
 
     <table style="margin-left: auto; margin-right: auto;">
@@ -118,9 +119,112 @@ include_once 'header.php';
                </div>';
     }
     ?>
+    <?php
+//    echo '<div style="text-align: center;">';
 
+    if (selectedProductsDesk($conn, $_SESSION['acid'], $_SESSION['natural'], $_SESSION['lowcal'], $_SESSION['milk'], $_SESSION['cofe'], $_SESSION['gust'], $_SESSION['aroma']) == allProductsDesk($conn)) {
+        echo '<p style="text-align: center;"><b>Nu ai completat încă <a href="./index.php">formularul de preferințe</a>.</b></p>';
+    }
+    else {
+        echo '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
+<tbody>
+<tr>
+<th colspan="2">Preferințe</th>
+</tr>
+';
+        echo '<tr>
+<td>Preferi băuturi acidulate?</td>
+<td>';
+        if ($_SESSION['acid'] == 'on') {
+            echo '✔';
+        }
+        else {
+            echo '✖';
+        }
+        echo '</td>
+</tr>';
+
+        echo '<tr>
+<td>Preferi băuturi naturale?</td>
+<td>';
+        if ($_SESSION['natural'] == 'on') {
+            echo '✔';
+        }
+        else {
+            echo '✖';
+        }
+        echo '</td>
+</tr>';
+
+        echo '<tr>
+<td>Preferi băuturi cu conţinut caloric scăzut?</td>
+<td>';
+        if ($_SESSION['lowcal'] == 'on') {
+            echo '✔';
+        }
+        else {
+            echo '✖';
+        }
+        echo '</td>
+</tr>';
+
+        echo '<tr>
+<td>Preferi băuturi fără lapte?</td>
+<td>';
+        if ($_SESSION['milk'] == 'on') {
+            echo '✔';
+        }
+        else {
+            echo '✖';
+        }
+        echo '</td>
+</tr>';
+
+        echo '<tr>
+<td>Preferi băuturi fără cofeină?</td>
+<td>';
+        if ($_SESSION['cofe'] == 'on') {
+            echo '✔';
+        }
+        else {
+            echo '✖';
+        }
+        echo '</td>
+</tr>';
+
+        echo '<tr>
+<td>Ce gust ai prefera sa aibă băutura?</td>
+<td>';
+        if ($_SESSION['gust'] != '') {
+            echo $_SESSION['gust'];
+        }
+        else {
+            echo '<b>?</b>';
+        }
+        echo '</td>
+</tr>';
+
+        echo '<tr>
+<td>Ce aromă ai prefera sa aibă băutura?</td>
+<td>';
+        if ($_SESSION['aroma'] != '') {
+            echo $_SESSION['aroma'];
+        }
+        else {
+            echo '<b>?</b>';
+        }
+        echo '</td>
+</tr>';
+
+        echo '</tbody>
+</table>';
+    }
+//    echo '</div>';
+    ?>
+
+
+    <p>&#160;</p>
 </div>
-<p>&#160;</p>
 <?php
 // phpinfo();
 include_once 'footer.php';

@@ -18,7 +18,7 @@
 include_once 'header.php';
 ?>
 <div class="contentdesk">
-<!--    <div class="formbox">-->
+    <div class="formbox">
         <h3>Lista produselor</h3>
         <?php
         require_once './hidden/dbh-hidden.php';
@@ -32,7 +32,8 @@ include_once 'header.php';
             echo allProductsDesk($conn);
         }
         ?>
-<!--    </div>-->
+    </div>
+    <p>&#160;</p>
 
 </div>
 <?php

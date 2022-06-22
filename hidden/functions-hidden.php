@@ -1,6 +1,6 @@
 <?php
 
-$index = 0;
+//$index = 0;
 
 function emptyInputRegister($email, $user, $pwd, $pwd_rpt)
 {
@@ -84,6 +84,8 @@ function createUser($conn, $email, $user, $pwd)
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
     $stmt = "INSERT INTO USERS VALUES ($row[0] + 1, '$user', '$hashedPwd', '$email')";
     pg_query($conn, $stmt);
+    $stmt = "INSERT INTO preferences VALUES (". getID($conn, $user) . ")";
+    pg_query($conn, $stmt);
 
     header("location: ../register.php?error=none");
     exit();
@@ -94,11 +96,18 @@ function loginUser($conn, $user, $pwd)
 //    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
     $stid = pg_query($conn, "SELECT passwd FROM USERS where username = '$user'");
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
-    // TODO VERIFY
     if ($row) {
         if (password_verify($pwd, $row["passwd"])) {
+
             session_start();
             $_SESSION['user'] = $user;
+            $_SESSION['acid'] = getAcid($conn, $user);
+            $_SESSION['natural'] = getNatural($conn, $user);
+            $_SESSION['lowcal'] = getLowCal($conn, $user);
+            $_SESSION['milk'] = getMilk($conn, $user);
+            $_SESSION['cofe'] = getCofe($conn, $user);
+            $_SESSION['gust'] = getGust($conn, $user);
+            $_SESSION['aroma'] = getAroma($conn, $user);
             header("location: ../index.php");
         } else {
             header("location: ../login.php?error=notfound");
@@ -171,15 +180,16 @@ function getEmail($conn, $user)
     return '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
-<td style="width: 35%;">Nume</td>
-<td>Acidulat?</td>
-<td>Natural?</td>
-<td>kcal/100g</td>
-<td>Lapte?</td>
-<td>Cafeină/100g</td>
-<td>Gust</td>
-<td>Aromă</td>
-<td>Link</td>
+<th style="width: 35%;">Nume</th>
+<th>Acidulat?</th>
+<th>Natural?</th>
+<th>kcal/100g</th>
+<th>Lapte?</th>
+<th>Cafeină/100g</th>
+<th>Gust</th>
+<th>Aromă</th>';
+//<td>Link</td>
+echo '
 </tr>';
  }
 
@@ -236,7 +246,7 @@ function getProductsDesk($conn, $cmd)
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     while ($row) {
         $result = $result . '<tr>';
-        $result = $result . '<td>' . $row["numeProdus"] . '</td>';
+        $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">' . $row["numeProdus"] . '</a></td>';
         if ($row["acidulat"] == 't') {
             $result = $result . '<td>✔</td>';
         } else if ($row["acidulat"] == 'f') {
@@ -262,7 +272,14 @@ function getProductsDesk($conn, $cmd)
         $result = $result . '<td>' . $row["cof"] . '</td>';
         $result = $result . '<td>' . $row["gust"] . '</td>';
         $result = $result . '<td>' . $row["aroma"] . '</td>';
-        $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">Link</a></td>';
+//        $startLink = $row["link"];
+//        $content=file_get_contents($startLink);
+//        $content = strip_tags($content,"<img id='og_image'>");
+//        $subString = preg_split(">", $content);
+//        echo $subString;
+
+//        $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">Link</a></td>';
+//        $result = $result . '<td><img width="75%" src="'. 'https://world.openfoodfacts.org/images/products/001/299/344/1104/front_en.3.400.jpg'. '"></td>';
         $result = $result . '</tr>
 ';
         $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
