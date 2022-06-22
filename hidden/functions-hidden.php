@@ -198,14 +198,17 @@ function getEmail($conn, $user)
 //    echo '3';
     $result = startTableDesk();
     $cmd = "SELECT * FROM beverages";
-    if ($acid == 'on'){
+    if ($acid == 'on' && $natural == 'on'){
+         $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY acidulat desc, natur desc";
+     }
+    else if ($acid == 'on'){
         $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY acidulat desc";
     }
-    if ($natural == 'on'){
+    else if ($natural == 'on'){
         $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY natur desc";
     }
     if ($lowcal == 'on'){
-        $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY calories asc";
+        $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY calories::int";
     }
     if ($milk == 'on'){
         $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE NOT milk";
@@ -217,7 +220,7 @@ function getEmail($conn, $user)
         $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE gust = '$gust'";
     }
     if ($aroma != ''){
-        $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE aroma like '%$gust%'";
+        $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE aroma like '%$aroma%'";
     }
 //    echo $cmd;
     $result = $result . getProductsDesk($conn, $cmd);
