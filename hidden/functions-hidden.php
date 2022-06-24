@@ -2,6 +2,20 @@
 
 //$index = 0;
 
+
+function getProductID($conn, $name){
+    $cmd = "SELECT * FROM beverages where nume_produs = '$name'";
+    $stid = pg_query($conn, $cmd);
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    return $row["id_produs"];
+}
+
+function getProductByID($conn, $id){
+    $cmd = "SELECT * FROM beverages where id_produs = '$id'";
+    $stid = pg_query($conn, $cmd);
+    return pg_fetch_array($stid, null, PGSQL_ASSOC);
+}
+
 function emptyInputRegister($email, $user, $pwd, $pwd_rpt)
 {
     if (empty($email) || empty($user) || empty($pwd) || empty($pwd_rpt)) {
@@ -246,7 +260,7 @@ function getProductsDesk($conn, $cmd)
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     while ($row) {
         $result = $result . '<tr>';
-        $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
+        $result = $result . '<td><a href="./beverage.php?id=' . getProductID($conn, $row["nume_produs"]) . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
         if ($row["acidulat"] == 't') {
             $result = $result . '<td>✔</td>';
         } else if ($row["acidulat"] == 'f') {
