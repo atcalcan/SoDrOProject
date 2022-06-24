@@ -122,7 +122,7 @@ include_once 'header.php';
     <?php
 //    echo '<div style="text-align: center;">';
 
-    if (selectedProductsDesk($conn, $_SESSION['acid'], $_SESSION['natural'], $_SESSION['lowcal'], $_SESSION['milk'], $_SESSION['cofe'], $_SESSION['gust'], $_SESSION['aroma']) == allProductsDesk($conn)) {
+    if (selectedProductsDesk($conn, $_SESSION['acid'], $_SESSION['natural'], $_SESSION['lowcal'], $_SESSION['milk'], $_SESSION['cofe'], $_SESSION['gust'], $_SESSION['aroma'], $_SESSION['user']) == allProductsDesk($conn, $_SESSION['user'])) {
         echo '<p style="text-align: center;"><b>Nu ai completat încă <a href="./index.php">formularul de preferințe</a>.</b></p>';
     }
     else {
@@ -181,7 +181,7 @@ include_once 'header.php';
 </tr>';
 
         echo '<tr>
-<td>Preferi băuturi fără cofeină?</td>
+<td>Preferi băuturi fără cafeină?</td>
 <td>';
         if ($_SESSION['cofe'] == 'on') {
             echo '✔';

@@ -2,7 +2,15 @@
 <html>
 
 <head>
-    <title>About us</title>
+    <title><?php
+        if (isset($_GET["id"])) {
+            $prId = $_GET["id"];
+            require_once './hidden/dbh-hidden.php';
+            require_once './hidden/functions-hidden.php';
+            $row = getProductByID($conn, $prId);
+            echo 'SoDrO: ' . $row["nume_produs"];
+        }
+        ?></title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>

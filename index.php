@@ -26,7 +26,7 @@ include_once 'header.php';
             <input name="lowcal" type="checkbox">
             <label for="milk"><p>4. Preferi băuturi fără lapte?</p></label>
             <input name="milk" type="checkbox">
-            <label for="cofe"><p>5. Preferi băuturi fără cofeină?</p></label>
+            <label for="cofe"><p>5. Preferi băuturi fără cafeină?</p></label>
             <input name="cofe" type="checkbox">
             <label for="gust"><p>6. Ce gust ai prefera sa aibă băutura?</p></label>
             <div style="text-align: center;">
