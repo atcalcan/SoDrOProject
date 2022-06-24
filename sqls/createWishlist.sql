@@ -1,6 +1,6 @@
 -- Table: public.wishlist
 
--- DROP TABLE IF EXISTS public.wishlist;
+DROP TABLE IF EXISTS public.wishlist;
 
 CREATE TABLE IF NOT EXISTS public.wishlist
 (

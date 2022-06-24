@@ -246,7 +246,7 @@ function getProductsDesk($conn, $cmd)
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     while ($row) {
         $result = $result . '<tr>';
-        $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">' . $row["numeProdus"] . '</a></td>';
+        $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
         if ($row["acidulat"] == 't') {
             $result = $result . '<td>✔</td>';
         } else if ($row["acidulat"] == 'f') {
