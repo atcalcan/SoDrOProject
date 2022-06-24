@@ -36,6 +36,9 @@ session_start();
                         <li>Admin Hub</li>
                     </a>';
                     }
+                    echo '<a href="./wishlist.php">
+                        <li>Wishlist</li>
+                    </a>';
                     echo '<a href="./hidden/logout.php">
                         <li>Log Out</li>
                     </a>';

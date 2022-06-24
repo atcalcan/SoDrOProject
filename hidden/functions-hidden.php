@@ -24,13 +24,14 @@ function isFav($conn, $uid, $bid){
 
 function toggleFav($conn, $uid, $bid){
     if (isFav($conn, $uid, $bid)){
+        echo '1';
         $cmd = "DELETE FROM wishlist where id_user_wish = $uid and id_produs_wish = $bid";
-        pg_query($conn, $cmd);
     }
     else {
-        $cmd = "INSERT INTO wishlist ($uid, $bid)";
-        pg_query($conn, $cmd);
+        echo '23';
+        $cmd = "INSERT INTO wishlist VALUES ($uid, $bid)";
     }
+    pg_query($conn, $cmd);
 }
 
 function getProductByID($conn, $id){
@@ -245,6 +246,16 @@ function getEmail($conn, $user)
 </table>';
 }
 
+function allWishlistDesk($conn, $user)
+{
+    $result = startTableDesk($user);
+//    echo '0';
+    $cmd = "SELECT * FROM beverages order by id_produs";
+    $result = $result . WishlistDesk($conn, $cmd, $user);
+    return $result . '</tbody>
+</table>';
+}
+
  function selectedProductsDesk($conn, $acid, $natural, $lowcal, $milk, $cofe, $gust, $aroma, $user)
 {
 //    echo '3';
@@ -316,18 +327,22 @@ function getProductsDesk($conn, $cmd, $user)
         $result = $result . '<td>' . $row["aroma"] . '</td>';
 
         if ($user != ''){
-            $result = $result . '<td><form>
+            $result = $result . '<td><form action="./hidden/wishlist-hidden.php" method="post">
 ';
+            require_once './hidden/preference-functions-hidden.php';
             $uid = getID($conn, $user);
 //            $result = $result . '<input type="image"';
             if (isFav($conn, $uid, $row["id_produs"])) {
-                $result = $result . '<input type="image" src="../assets/wish/on.svg" width="30px" name="Submit" alt="Submit"/>
+                $result = $result . '<input type="image" src="./assets/wish/on.svg" width="25px" name="SubmitW" alt="Submit"/>
             ';
             }
             else {
-                $result = $result . '<input type="image" src="../assets/wish/off.svg" width="30px" name="Submit" alt="Submit"/>
+                $result = $result . '<input type="image" src="./assets/wish/off.svg" width="25px" name="SubmitW" alt="Submit"/>
             ';
             }
+            $result = $result . '<input name="uid" type="hidden" value="' . $uid . '">';
+            $result = $result . '<input name="pid" type="hidden" value="' . $row["id_produs"] . '">';
+            $result = $result . '<input name="from" type="hidden" value="p">';
 //            $result = $result . ' border="0" name="Submit"/>
 //            ';
 
@@ -348,36 +363,63 @@ function getProductsDesk($conn, $cmd, $user)
     return $result;
 }
 
-//function receivedReteta($nume, $vegetarian, $vegan, $descriere, $string, $conn)
-//{
-//    $stid = oci_parse($conn, "select max(ID) as ID from RETETE");
-//    oci_execute($stid);
-//    oci_fetch($stid);
-//    $id = oci_result($stid, 'ID');
-//    $stid = oci_parse($conn, "INSERT INTO RETETE (id, nume, vegetarian, vegan, descriere) VALUES ($id + 1, '$nume', '$vegetarian', '$vegan', '$descriere')");
-//    oci_execute($stid);
-//    oci_commit($conn);
-//    stringParser($string, $id + 1, $conn);
-//    header("location: ../products.php");
-//}
-//
-//function emptyInputRecipy($nume, $vegetarian, $vegan, $descriere, $string)
-//{
-//
-//    if (!isset($nume) || !isset($vegetarian) || !isset($vegan) || !isset($descriere) || !isset($string)) {
-//        return true;
-//    } else {
-//        return false;
-//    }
-//}
-//
-//function stringParser($string, $id, $conn)
-//{
-//    $pieces = explode(", ", $string);
-//    foreach ($pieces as &$word) {
-//        $separe = explode(" ", $word);
-//        $stid = oci_parse($conn, "INSERT INTO INGREDIENTE (id, nume, cantitate) VALUES ($id, '$separe[0]', '$separe[1]')");
-//        oci_execute($stid);
-//        oci_commit($conn);
-//    }
-//}
+function WishlistDesk($conn, $cmd, $user)
+{
+    require_once './hidden/preference-functions-hidden.php';
+    $result = '';
+    $uid = getID($conn, $user);
+    $stid = pg_query($conn, $cmd) or die('Error: ' . pg_last_error());
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    while ($row) {
+        if (isFav($conn, $uid, $row["id_produs"])) {
+            $result = $result . '<tr>';
+            $result = $result . '<td><a id="' . $row["id_produs"] . '"></a><a href="./beverage.php?id=' . getProductID($conn, $row["nume_produs"]) . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
+            if ($row["acidulat"] == 't') {
+                $result = $result . '<td>✔</td>';
+            } else if ($row["acidulat"] == 'f') {
+                $result = $result . '<td>✖</td>';
+            } else {
+                $result = $result . '<td><b>?</b></td>';
+            }
+            if ($row["natur"] == 't') {
+                $result = $result . '<td>✔</td>';
+            } else if ($row["natur"] == 'f') {
+                $result = $result . '<td>✖</td>';
+            } else {
+                $result = $result . '<td><b>?</b></td>';
+            }
+            $result = $result . '<td>' . $row["calories"] . '</td>';
+            if ($row["milk"] == 't') {
+                $result = $result . '<td>✔</td>';
+            } else if ($row["milk"] == 'f') {
+                $result = $result . '<td>✖</td>';
+            } else {
+                $result = $result . '<td><b>?</b></td>';
+            }
+            $result = $result . '<td>' . $row["cof"] . '</td>';
+            $result = $result . '<td>' . $row["gust"] . '</td>';
+            $result = $result . '<td>' . $row["aroma"] . '</td>';
+
+            if ($user != '') {
+                $result = $result . '<td><form action="./hidden/wishlist-hidden.php" method="post">
+';
+
+                if (isFav($conn, $uid, $row["id_produs"])) {
+                    $result = $result . '<input type="image" src="./assets/wish/on.svg" width="25px" name="SubmitW" alt="Submit"/>
+            ';
+                } else {
+                    $result = $result . '<input type="image" src="./assets/wish/off.svg" width="25px" name="SubmitW" alt="Submit"/>
+            ';
+                }
+                $result = $result . '<input name="uid" type="hidden" value="' . $uid . '">';
+                $result = $result . '<input name="pid" type="hidden" value="' . $row["id_produs"] . '">';
+                $result = $result . '<input name="from" type="hidden" value="w">';
+                $result = $result . '</form></td>';
+            }
+            $result = $result . '</tr>
+';
+        }
+        $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    }
+    return $result;
+}

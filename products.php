@@ -26,7 +26,7 @@ include_once 'header.php';
 
         if (isset($_SESSION['acid']) | isset($_SESSION['natural']) | isset($_SESSION['lowcal']) | isset($_SESSION['milk']) | isset($_SESSION['cofe']) | isset($_SESSION['gust']) | isset($_SESSION['aroma'])) {
 //            echo '<p>'. $_SESSION['acid'] . ' ' . $_SESSION['natural'] . ' ' . $_SESSION['lowcal'] . ' ' . $_SESSION['milk'] . ' ' . $_SESSION['cofe'] . ' ' . $_SESSION['gust'] . ' ' . $_SESSION['aroma'] . '</p>';
-            echo selectedProductsDesk($conn, $_SESSION['acid'], $_SESSION['natural'], $_SESSION['lowcal'], $_SESSION['milk'], $_SESSION['cofe'], $_SESSION['gust'], $_SESSION['aroma'], $_SESSION['user']) or die('Error: ' . pg_last_error());
+            echo selectedProductsDesk($conn, $_SESSION['acid'], $_SESSION['natural'], $_SESSION['lowcal'], $_SESSION['milk'], $_SESSION['cofe'], $_SESSION['gust'], $_SESSION['aroma'], $_SESSION['user']);
         }
         else {
             echo allProductsDesk($conn, $_SESSION['user']);
