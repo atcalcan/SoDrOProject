@@ -4,7 +4,7 @@
 <head>
 
     <title>Formular</title>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="UTF-8">
 

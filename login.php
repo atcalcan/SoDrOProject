@@ -5,6 +5,7 @@
     <title>Login</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./css/intro.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
     <!--     <link rel="stylesheet" type="text/css" href="./css/style.css">-->
 </head>
 

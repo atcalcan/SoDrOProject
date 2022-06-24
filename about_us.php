@@ -5,6 +5,7 @@
     <title>About us</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
 </head>
 
 <body>

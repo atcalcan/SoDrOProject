@@ -21,3 +21,25 @@ function getProductIngredients($startLink){
     return $trial1;
     //    return str_replace("200.jpg","full.jpg",$trial1);
 }
+
+
+function getNova($startLink){
+    $content=file_get_contents($startLink);
+    $content = strip_tags($content,"<img>");
+    $trial = strchr($content, '/attributes/nova-group');
+    $trial1 = strtok($trial, '"');
+    $trial1= 'https://static.openfoodfacts.org/images/' . $trial1;
+    return $trial1;
+    //    return str_replace("200.jpg","full.jpg",$trial1);
+}
+
+
+function getNutriscore($startLink){
+    $content=file_get_contents($startLink);
+    $content = strip_tags($content,"<img>");
+    $trial = strchr($content, '/attributes/nutriscore');
+    $trial1 = strtok($trial, '"');
+    $trial1= 'https://static.openfoodfacts.org/images/' . $trial1;
+    return $trial1;
+    //    return str_replace("200.jpg","full.jpg",$trial1);
+}

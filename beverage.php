@@ -29,7 +29,7 @@ include_once 'header.php';
         require_once './hidden/functions-hidden.php';
         require_once './hidden/beverage-functions-hidden.php';
         $row = getProductByID($conn, $prId);
-        echo '<h3>' . $row["nume_produs"] . '</h3>';
+        echo '<h2><a href="'. $row["link"] .'" target="_blank">' . $row["nume_produs"] . '</a></h2>';
 //        echo '<p style="text-align: center;"><a href="' . $row["link"] . '" target="_blank">Link</a></p>';
         echo '<table style="width: 80%; margin-left: auto; margin-right: auto;">
 <tbody>
@@ -129,7 +129,19 @@ include_once 'header.php';
         echo '</tbody>
 </table>
 </td>
-<td style="width: 30%;">'.  '</td>
+<td style="width: 30%;"><table style="width: 90%;">
+<tbody>
+<tr>
+<td><a href="https://world.openfoodfacts.org/nova" target="_blank"><img src="'. getNova($row["link"]) .'"></a></td>
+</tr>
+<tr>
+<td>&#160;</td>
+</tr>
+<tr>
+<td><a href="https://world.openfoodfacts.org/nutriscore" target="_blank"><img src="' . getNutriscore($row["link"]) . '"></a></td>
+</tr>
+</tbody>
+</table>
 </tr>
 </tbody>
 </table>';
