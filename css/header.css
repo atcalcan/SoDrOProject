@@ -79,30 +79,36 @@
     }
 
     .headermob {
-        display:contents;
-}
-    nav{
+        display: contents;
+    }
+
+    nav {
         background: #ff63ca;
         height: 100px;
         width: 100%;
     }
-    nav ul{
+
+    nav ul {
         float: right;
     }
-    a.active,a:hover{
+
+    a.active, a:hover {
         background: #ff63ca;
         transition: .5s;
     }
-    .checkbtn{
+
+    .checkbtn {
         font-size: 50px;
         color: #fec2fb;
         float: right;
         cursor: pointer;
-        size: 100%;
+        /*size: 100%;*/
         margin-right: 15px;
     }
-#check{
-    display: none;
+
+    /*#check {*/
+    /*    display: none;*/
+    /*}*/
 }
 @media (max-width: 500px){
     nav ul li a{
@@ -127,11 +133,10 @@
         font-size: 20px;
     }
     a:hover,a.active{
-        background: block;
+        /*background: block;*/
         color: #ff00a8;
     }
     #check:checked ~ ul{
         left: 0;
     }
-}
 }
