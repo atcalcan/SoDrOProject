@@ -13,42 +13,42 @@ session_start();
 <nav>
     <div class="headerdesk">
         <div class="logo_header">
-            <img src="./assets/logo.png" height="100px">
+            <a href="./about_us.php"><img src="./assets/logo.png" height="100px"></a>
         </div>
         <div class="inner_header">
             <ul class="navigation">
-                <a href="./index.php">
-                    <li>Formular</li>
-                </a>
-                <a href="./products.php">
-                    <li>Lista produselor</li>
-                </a>
-                <a href="./about_us.php">
-                    <li>Despre noi</li>
-                </a>
+                <li><a href="./index.php">
+                    Formular
+                </a></li>
+                <li><a href="./products.php">
+                    Lista produselor
+                </a></li>
+                <li><a href="./about_us.php">
+                    Despre noi
+                </a></li>
                 <?php
                 if (isset($_SESSION['user'])) {
-                    echo '<a href="./profile.php">
-                        <li>Profil</li>
-                    </a>';
+                    echo '<li><a href="./profile.php">
+                        Profil
+                    </a></li>';
                     if ($_SESSION['user'] == 'admin') {
-                        echo '<a href="./admin.php">
-                        <li>Admin Hub</li>
-                    </a>';
+                        echo '<li><a href="./admin.php">
+                        Admin Hub
+                    </a></li>';
                     }
-                    echo '<a href="./wishlist.php">
-                        <li>Wishlist</li>
-                    </a>';
-                    echo '<a href="./hidden/logout.php">
-                        <li>Log Out</li>
-                    </a>';
+                    echo '<li><a href="./wishlist.php">
+                        Wishlist
+                    </a></li>';
+                    echo '<li><a href="./hidden/logout.php">
+                        Log Out
+                    </a></li>';
                 } else {
-                    echo '<a href="./login.php">
-                        <li>Autentificare</li>
-                    </a>';
-                    echo '<a href="./register.php">
-                        <li>Înregistrare</li>
-                    </a>';
+                    echo '<li><a href="./login.php">
+                        Autentificare
+                    </a></li>';
+                    echo '<li><a href="./register.php">
+                        Înregistrare
+                    </a></li>';
                 }
                 ?>
 

@@ -31,6 +31,10 @@ body {
     text-decoration: underline;
 }
 
+::-webkit-scrollbar{
+    width: 0;
+}
+
 .contentdesk {
     background-color: #fff;
     width: 80%;
@@ -54,7 +58,7 @@ body {
 td {
     text-align: center;
     vertical-align: middle;
-    display: none;
+    /*display: none;*/
 }
 
 H3 {
