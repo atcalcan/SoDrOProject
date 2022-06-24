@@ -14,7 +14,10 @@
         header("location: ../products.php#$pid");
     }
     else if ($from == 'w') {
-        header("location: ../wishlist.php#$pid");
+        header("location: ../wishlist.php");
+    }
+    else if ($from == 'pr') {
+        header("location: ../beverage.php?id=$pid");
     }
     exit();
 //}

@@ -348,14 +348,6 @@ function getProductsDesk($conn, $cmd, $user)
 
             $result = $result . '</form></td>';
         }
-//        $startLink = $row["link"];
-//        $content=file_get_contents($startLink);
-//        $content = strip_tags($content,"<img id='og_image'>");
-//        $subString = preg_split(">", $content);
-//        echo $subString;
-
-//        $result = $result . '<td><a href="' . $row["link"] . '" target="_blank">Link</a></td>';
-//        $result = $result . '<td><img width="75%" src="'. 'https://world.openfoodfacts.org/images/products/001/299/344/1104/front_en.3.400.jpg'. '"></td>';
         $result = $result . '</tr>
 ';
         $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
