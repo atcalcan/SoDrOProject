@@ -8,6 +8,7 @@ if (isset($_POST["submit"])) {
 
     require_once './dbh-hidden.php';
     require_once './functions-hidden.php';
+    require_once './preference-functions-hidden.php';
 
     if (emptyInputRegister($email, $user, $pwd, $pwd_rpt) !== false) {
         header("location: ../register.php?error=emptyinput");
