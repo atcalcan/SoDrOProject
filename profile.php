@@ -220,7 +220,21 @@ include_once 'header.php';
         echo '</tbody>
 </table>';
     }
-//    echo '</div>';
+
+    echo '<p>&#160;</p>';
+
+    echo '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
+<tbody>
+<tr>
+<th>Listele utilizatorului</th>
+<th></th>
+</tr>';
+    include_once './hidden/preference-functions-hidden.php';
+    include_once './hidden/lists-functions-hidden.php';
+
+    $uid = getID($conn, $_SESSION['user']);
+    echo getUserLists($conn, $uid);
+    echo '</tbody></table>';
     ?>
 
 

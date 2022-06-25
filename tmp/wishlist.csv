@@ -1,10 +1,10 @@
-id_produs;nume_produs;link;acidulat;natur;calories;milk;cof;gust;aroma
-15;Nestle Kefir natural;https://world.openfoodfacts.org/product/8435257045672/kefir-natural-nestle;f;t;44;t;0;Acru;iaurt
-24;Silk Coconut milk;https://world.openfoodfacts.org/product/0025293001220/coconut-original-coconutmilk-silk;f;t;29;f;0;Dulce;cocos
-25;La Croix LimonCello;https://world.openfoodfacts.org/product/1299344111/la-croix-limoncello;t;t;0;f;0;Acru;lamaie
-28;La Croix Pasteque;https://world.openfoodfacts.org/product/0012993441104/pasteque-watermelon-la-croix;t;t;0;f;0;Dulce;pepene
-29;Silk Vanilla almondmilk;https://world.openfoodfacts.org/product/0025293000995/vanilla-almondmilk-silk;f;t;33;f;0;Dulce;vanilie
-31;Fanta Grape;https://world.openfoodfacts.org/product/0049000050240/fanta-grape-flavored-soda;t;f;47;f;0;Dulce;struguri
-32;Timbark mar verde;https://world.openfoodfacts.org/product/5941588002626/timbark-mar-verde;f;f;47;f;0;Dulce;mar
-38;Tropicana Multifruits;https://world.openfoodfacts.org/product/3168930156680/tropicana-multifruits;f;t;48;f;0;Dulce;fructe
-39;Tropicana Ananas citron vert;https://world.openfoodfacts.org/product/3168930156864/tropicana-ananas-citron-vert;f;t;47;f;0;Acru;ananas
+id_produs,nume_produs,link,acidulat,natur,calories,milk,cof,gust,aroma
+15,Nestle Kefir natural,https://world.openfoodfacts.org/product/8435257045672/kefir-natural-nestle,f,t,44,t,0,Acru,iaurt
+24,Silk Coconut milk,https://world.openfoodfacts.org/product/0025293001220/coconut-original-coconutmilk-silk,f,t,29,f,0,Dulce,cocos
+25,La Croix LimonCello,https://world.openfoodfacts.org/product/1299344111/la-croix-limoncello,t,t,0,f,0,Acru,lamaie
+28,La Croix Pasteque,https://world.openfoodfacts.org/product/0012993441104/pasteque-watermelon-la-croix,t,t,0,f,0,Dulce,pepene
+29,Silk Vanilla almondmilk,https://world.openfoodfacts.org/product/0025293000995/vanilla-almondmilk-silk,f,t,33,f,0,Dulce,vanilie
+31,Fanta Grape,https://world.openfoodfacts.org/product/0049000050240/fanta-grape-flavored-soda,t,f,47,f,0,Dulce,struguri
+32,Timbark mar verde,https://world.openfoodfacts.org/product/5941588002626/timbark-mar-verde,f,f,47,f,0,Dulce,mar
+38,Tropicana Multifruits,https://world.openfoodfacts.org/product/3168930156680/tropicana-multifruits,f,t,48,f,0,Dulce,fructe
+39,Tropicana Ananas citron vert,https://world.openfoodfacts.org/product/3168930156864/tropicana-ananas-citron-vert,f,t,47,f,0,Acru,ananas

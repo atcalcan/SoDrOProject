@@ -160,25 +160,60 @@ include_once 'header.php';
 </table>';
         if ($_GET["action"]=='add'){
             echo '<p>&#160;</p>';
+            if (isset($_GET["error"])) {
+                if ($_GET["error"] == "double") {
+                    echo '<p style="color:red; text-align: center; font-size: 80%">Acest produs se află deja în lista selectată.</p>';
+                } else if ($_GET["error"] == "none") {
+                    echo '<p style="color:#0072a0; text-align: center;">Am adăugat cu succes produsul în listă.</p>';
+                }
+            }
             //TODO ERRORS
-            echo '<div class="formbox2">
+            echo '<table style="width: 50%; margin-left: auto; margin-right: auto;">
+                <tbody>
+                <tr>
+                    <td><div class="formbox2">
 <form action="./hidden/add-to-list-hidden.php" method="post">
 <label for="listName">
 <p>În ce listă dorești să adaugi produsul?</p>
 </label>
 <select name="listName" multiple>
 ';
-//            require_once './hidden/preference-functions-hidden.php';
+            require_once './hidden/preference-functions-hidden.php';
+            require_once './hidden/lists-functions-hidden.php';
             $uid = getID($conn, $_SESSION['user']);
 
 
-            echo getUserLists($conn, $uid);
-//                    <option value="Dulce">Dulce</option>
-//                    <option value="Amar">Amar</option>
-//                    <option value="Acru">Acru</option>
-            echo '</select>
-</form>
-</div>';
+            echo getUserListsOptions($conn, $uid);
+            echo '</select>';
+            echo '<input type="submit" value="Submit"  name="SubmitListName" />
+            ';
+            echo '<input name="pid" type="hidden" value="' . $row["id_produs"] . '">';
+            echo '<input name="user" type="hidden" value="' . $_SESSION['user'] . '">';
+            echo '</form>
+</div></td>
+        </tr>
+        <tr><td>';
+            echo '</td></tr>';
+            if ($_GET["list"]=='new'){
+                if (isset($_GET["error"])) {
+                    if ($_GET["error"] == "dl") {
+                        echo '<p style="color:red; text-align: center; font-size: 80%">Ați creat deja o listă cu acest nume.</p>';
+                    } else if ($_GET["error"] == "nonenew") {
+                        echo '<p style="color:#0072a0; text-align: center;">Am creat cu succes noua listă și am adăugat produsul selectat.</p>';
+                    }
+                }
+                echo '<tr><td><div class="formbox2"><form action="./hidden/new-list-hidden.php" method="post">
+<label for="newName"><p>Care va fi numele noii liste?</p></label>
+                <input name="pid" type="hidden" value="' . $row["id_produs"] . '">';
+                echo '<input name="user" type="hidden" value="' . $_SESSION['user'] . '">';
+                echo '<input name="newName" type="text" placeholder="Introdu numele dorit pentru noua listă">
+<input name="newNameSubmit" type="submit" value="Submit new name">
+</form></div></td></tr>';
+
+            }
+
+            echo '</tbody>
+        </table>';
 
         }
         echo '
