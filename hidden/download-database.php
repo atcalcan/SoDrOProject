@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST["Download"])){
+if (isset($_POST["Download"])) {
     $uid = $_POST["uid"];
 
     require_once './dbh-hidden.php';

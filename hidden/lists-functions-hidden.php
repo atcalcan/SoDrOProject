@@ -1,7 +1,6 @@
 <?php
 
 
-
 function createList($conn, $user, $listName)
 {
     $stid = pg_query($conn, "SELECT max(list_id) FROM users_lists");
@@ -24,24 +23,25 @@ function checkListName($conn, $user, $listName): bool
     $uid = getID($conn, $user);
     $stid = pg_query($conn, "SELECT * FROM users_lists where list_name = '$listName' AND uid_lists = $uid");
     $row = pg_fetch_array($stid, null, PGSQL_NUM);
-    if ($row){
+    if ($row) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
 
-function addBevToList($conn, $user, $listName, $pid){
+function addBevToList($conn, $user, $listName, $pid)
+{
     if (checkListName($conn, $user, $listName)) {
-        $stid = pg_query($conn, "INSERT INTO lists_items VALUES (". getListID($conn, $listName, $user) . ", $pid)");
+        $stid = pg_query($conn, "INSERT INTO lists_items VALUES (" . getListID($conn, $listName, $user) . ", $pid)");
         pg_fetch_array($stid, null, PGSQL_NUM);
     }
 
 
 }
 
-function getListID($conn, $listName, $user){
+function getListID($conn, $listName, $user)
+{
     require_once './preference-functions-hidden.php';
     $uid = getID($conn, $user);
     $stid = pg_query($conn, "SELECT * FROM users_lists where list_name = '$listName' and uid_lists = $uid");
@@ -49,7 +49,8 @@ function getListID($conn, $listName, $user){
     return $row["list_id"];
 }
 
-function getList($conn, $id){
+function getList($conn, $id)
+{
     $stid = pg_query($conn, "SELECT * FROM users_lists where list_id = $id");
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     return $row;
@@ -57,11 +58,11 @@ function getList($conn, $id){
 
 function getUserListsOptions($conn, $uid): string
 {
-    $result='';
+    $result = '';
     $stid = pg_query($conn, "SELECT * FROM users_lists where uid_lists = $uid");
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
-    while ($row){
-        $result = $result . '<option value="'.$row["list_name"].'">'.$row["list_name"].'</option>
+    while ($row) {
+        $result = $result . '<option value="' . $row["list_name"] . '">' . $row["list_name"] . '</option>
 ';
         $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     }
@@ -71,24 +72,24 @@ function getUserListsOptions($conn, $uid): string
 
 function getUserLists($conn, $uid): string
 {
-    $result='';
+    $result = '';
     $stid = pg_query($conn, "SELECT * FROM users_lists where uid_lists = $uid");
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
-    while ($row){
-        $result = $result . '<tr><td><a href="./user_list.php?id=' . $row["list_id"] . '" target="_blank">'.$row["list_name"] . '</a></td>';
+    while ($row) {
+        $result = $result . '<tr><td><a href="./user_list.php?id=' . $row["list_id"] . '" target="_blank">' . $row["list_name"] . '</a></td>';
         $result = $result . '<td><form action="./hidden/delete-list-hidden.php" method="post">
 ';
-            require_once './hidden/preference-functions-hidden.php';
+        require_once './hidden/preference-functions-hidden.php';
 //            $uid = getID($conn, $user);
 //            $result = $result . '<input type="image"';
-            $result = $result . '<input type="image" src="./assets/minus.svg" width="15px" name="DeleteP" alt="Submit"/>';
+        $result = $result . '<input type="image" src="./assets/minus.svg" width="15px" name="DeleteP" alt="Submit"/>';
 //            $result = $result . '<input name="pid" type="hidden" value="' . $row["id_produs"] . '">';
-            $result = $result . '<input name="ListId" type="hidden" value="' . $row["list_id"] . '">';
-            $result = $result . '<input name="from" type="hidden" value="ld">';
+        $result = $result . '<input name="ListId" type="hidden" value="' . $row["list_id"] . '">';
+        $result = $result . '<input name="from" type="hidden" value="ld">';
 //            $result = $result . ' border="0" name="Submit"/>
 //            ';
 
-            $result = $result . '</form></td>';
+        $result = $result . '</form></td>';
 
 
         echo '</tr>
@@ -99,12 +100,14 @@ function getUserLists($conn, $uid): string
 
 }
 
-function removeList($conn, $ListId){
+function removeList($conn, $ListId)
+{
     pg_query($conn, "DELETE FROM users_lists where list_id = $ListId");
     pg_query($conn, "DELETE FROM lists_items where list_id_i = $ListId");
 }
 
-function removeItemFromList($conn, $ListId, $ItemId){
+function removeItemFromList($conn, $ListId, $ItemId)
+{
     pg_query($conn, "DELETE FROM lists_items where list_id_i = $ListId AND pid_i = $ItemId");
 }
 
@@ -113,17 +116,17 @@ function checkPIDinList($conn, $listName, $pid, $user): bool
     $listId = getListID($conn, $listName, $user);
     $stid = pg_query($conn, "SELECT * FROM lists_items where pid_i = $pid AND list_id_i = $listId");
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
-    if ($row){
+    if ($row) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 
 
 }
 
-function startListTableDesk(){
+function startListTableDesk()
+{
     $result = '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
@@ -160,7 +163,7 @@ function getListProductsDesk($conn, $cmd, $user, $listId)
     while ($row) {
         $result = $result . '<tr>';
         include_once './hidden/functions-hidden.php';
-        $result = $result . '<td><a id="' . $row["id_produs"] .'"></a><a href="./beverage.php?id=' . getProductID($conn, $row["nume_produs"]) . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
+        $result = $result . '<td><a id="' . $row["id_produs"] . '"></a><a href="./beverage.php?id=' . getProductID($conn, $row["nume_produs"]) . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
         if ($row["acidulat"] == 't') {
             $result = $result . '<td>✔</td>';
         } else if ($row["acidulat"] == 'f') {
@@ -187,7 +190,7 @@ function getListProductsDesk($conn, $cmd, $user, $listId)
         $result = $result . '<td>' . $row["gust"] . '</td>';
         $result = $result . '<td>' . $row["aroma"] . '</td>';
 
-        if ($user != ''){
+        if ($user != '') {
             $result = $result . '<td><form action="./hidden/delete-list-hidden.php" method="post">
 ';
             require_once './hidden/preference-functions-hidden.php';

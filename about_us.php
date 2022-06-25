@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>About us</title>
+    <title>Homepage</title>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -14,9 +14,11 @@
 include_once 'header.php';
 ?>
 <div class="contentdesk">
-    <h3>Despre noi</h3>
+    <h3>SoDrO</h3>
     <table>
         <tbody>
+        <tr><td colspan="2"><img class="sticla" src="./assets/logo.png" width="30%" alt="avatar"></td></tr>
+        <tr><td></td></tr>
         <tr>
             <td width="30%">
                 <div style="text-align: center;"><img class="sticla" src="./assets/avatar.svg" width="30%" alt="avatar">
@@ -34,14 +36,19 @@ include_once 'header.php';
                     aplicaţie web.
                     Evident, când am citit această cerinţă inedită, inspiraţia noastră a explodat în nenumărate
                     idei.</p>
-                <p>Ce se poate vedea aici este doar un prototip al aspectului final al aplicaţiei noastre. Dar
-                    suntem
-                    siguri că produsul final ne va marca tuturor viaţa în moduri creative şi neprevăzute.</p>
+
 
             </td>
         </tr>
         </tbody>
     </table>
+    <?php
+    include_once './hidden/dbh-hidden.php';
+    include_once './hidden/functions-hidden.php';
+
+    echo PopularityContest($conn);
+    ?>
+
     <p>&#160;</p>
 </div>
 
@@ -59,9 +66,6 @@ include_once 'header.php';
         aplicaţie web.
         Evident, când am citit această cerinţă inedită, inspiraţia noastră a explodat în nenumărate
         idei.</p>
-    <p>Ce se poate vedea aici este doar un prototip al aspectului final al aplicaţiei noastre. Dar
-        suntem
-        siguri că produsul final ne va marca tuturor viaţa în moduri creative şi neprevăzute.</p>
 </div>
 <?php
 // phpinfo();

@@ -121,12 +121,11 @@ include_once 'header.php';
     }
     ?>
     <?php
-//    echo '<div style="text-align: center;">';
+    //    echo '<div style="text-align: center;">';
 
     if (selectedProductsDesk($conn, $_SESSION['acid'], $_SESSION['natural'], $_SESSION['lowcal'], $_SESSION['milk'], $_SESSION['cofe'], $_SESSION['gust'], $_SESSION['aroma'], $_SESSION['user']) == allProductsDesk($conn, $_SESSION['user'])) {
         echo '<p style="text-align: center;"><b>Nu ai completat încă <a href="./index.php">formularul de preferințe</a>.</b></p>';
-    }
-    else {
+    } else {
         echo '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
@@ -138,8 +137,7 @@ include_once 'header.php';
 <td>';
         if ($_SESSION['acid'] == 'on') {
             echo '✔';
-        }
-        else {
+        } else {
             echo '✖';
         }
         echo '</td>
@@ -150,8 +148,7 @@ include_once 'header.php';
 <td>';
         if ($_SESSION['natural'] == 'on') {
             echo '✔';
-        }
-        else {
+        } else {
             echo '✖';
         }
         echo '</td>
@@ -162,8 +159,7 @@ include_once 'header.php';
 <td>';
         if ($_SESSION['lowcal'] == 'on') {
             echo '✔';
-        }
-        else {
+        } else {
             echo '✖';
         }
         echo '</td>
@@ -174,8 +170,7 @@ include_once 'header.php';
 <td>';
         if ($_SESSION['milk'] == 'on') {
             echo '✔';
-        }
-        else {
+        } else {
             echo '✖';
         }
         echo '</td>
@@ -186,8 +181,7 @@ include_once 'header.php';
 <td>';
         if ($_SESSION['cofe'] == 'on') {
             echo '✔';
-        }
-        else {
+        } else {
             echo '✖';
         }
         echo '</td>
@@ -198,8 +192,7 @@ include_once 'header.php';
 <td>';
         if ($_SESSION['gust'] != '') {
             echo $_SESSION['gust'];
-        }
-        else {
+        } else {
             echo '<b>?</b>';
         }
         echo '</td>
@@ -210,8 +203,7 @@ include_once 'header.php';
 <td>';
         if ($_SESSION['aroma'] != '') {
             echo $_SESSION['aroma'];
-        }
-        else {
+        } else {
             echo '<b>?</b>';
         }
         echo '</td>
@@ -222,15 +214,15 @@ include_once 'header.php';
     }
 
 
-        echo '<p>&#160;</p>';
-        echo '<a id="lists"></a>';
-        include_once './hidden/dbh-hidden.php';
-        include_once './hidden/preference-functions-hidden.php';
-        include_once './hidden/lists-functions-hidden.php';
-        $uid = getID($conn, $_SESSION['user']);
-        if (getUserLists($conn, $uid) != ''){
+    echo '<p>&#160;</p>';
+    echo '<a id="lists"></a>';
+    include_once './hidden/dbh-hidden.php';
+    include_once './hidden/preference-functions-hidden.php';
+    include_once './hidden/lists-functions-hidden.php';
+    $uid = getID($conn, $_SESSION['user']);
+    if (getUserLists($conn, $uid) != '') {
 
-            echo '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
+        echo '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
 <th>Listele utilizatorului</th>
@@ -242,8 +234,7 @@ include_once 'header.php';
         $uid = getID($conn, $_SESSION['user']);
         echo getUserLists($conn, $uid);
         echo '</tbody></table>';
-    }
-    else {
+    } else {
         echo '<p style="text-align: center;"><b>Nu ai creat încă nici o listă.</b></p>';
     }
     ?>

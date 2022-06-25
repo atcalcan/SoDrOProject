@@ -17,11 +17,15 @@ body {
 
 
 .contentdesk A:link {
-    COLOR: #000000; TEXT-DECORATION: none;
+    COLOR: #000000;
+    TEXT-DECORATION: none;
 }
+
 .contentdesk A:visited {
-    COLOR: #000000; TEXT-DECORATION: none;
+    COLOR: #000000;
+    TEXT-DECORATION: none;
 }
+
 .contentdesk A:hover {
     COLOR: #ff63ca;
     text-decoration: underline;
@@ -31,7 +35,7 @@ body {
     text-decoration: underline;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 0;
 }
 
@@ -145,6 +149,13 @@ input[type="email"] {
     font-size: 16px;
     font-family: "font", serif;
 }
+
+
+
+.contentmob {
+    display: none;
+}
+
 
 
 @media screen and (max-device-width: 1280px) {

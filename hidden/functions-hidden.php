@@ -3,38 +3,40 @@
 //$index = 0;
 
 
-function getProductID($conn, $name){
+function getProductID($conn, $name)
+{
     $cmd = "SELECT * FROM beverages where nume_produs = '$name'";
     $stid = pg_query($conn, $cmd);
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     return $row["id_produs"];
 }
 
-function isFav($conn, $uid, $bid){
+function isFav($conn, $uid, $bid)
+{
     $cmd = "SELECT * FROM wishlist where id_user_wish = $uid and id_produs_wish = $bid";
     $stid = pg_query($conn, $cmd);
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
-    if($row){
+    if ($row) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
 
-function toggleFav($conn, $uid, $bid){
-    if (isFav($conn, $uid, $bid)){
+function toggleFav($conn, $uid, $bid)
+{
+    if (isFav($conn, $uid, $bid)) {
         echo '1';
         $cmd = "DELETE FROM wishlist where id_user_wish = $uid and id_produs_wish = $bid";
-    }
-    else {
+    } else {
         echo '23';
         $cmd = "INSERT INTO wishlist VALUES ($uid, $bid)";
     }
     pg_query($conn, $cmd);
 }
 
-function getProductByID($conn, $id){
+function getProductByID($conn, $id)
+{
     $cmd = "SELECT * FROM beverages where id_produs = '$id'";
     $stid = pg_query($conn, $cmd);
     return pg_fetch_array($stid, null, PGSQL_ASSOC);
@@ -122,7 +124,7 @@ function createUser($conn, $email, $user, $pwd)
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
     $stmt = "INSERT INTO USERS VALUES ($row[0] + 1, '$user', '$hashedPwd', '$email')";
     pg_query($conn, $stmt);
-    $stmt = "INSERT INTO preferences VALUES (". getID($conn, $user) . ")";
+    $stmt = "INSERT INTO preferences VALUES (" . getID($conn, $user) . ")";
     pg_query($conn, $stmt);
 
     header("location: ../register.php?error=none");
@@ -214,7 +216,8 @@ function getEmail($conn, $user)
     return $row["email"];
 }
 
- function startTableDesk($user){
+function startTableDesk($user)
+{
     $result = '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
@@ -226,17 +229,17 @@ function getEmail($conn, $user)
 <th>Cafeină/100g</th>
 <th>Gust</th>
 <th>Aromă</th>';
-    if ($user != ''){
+    if ($user != '') {
         $result = $result . '<th></th>';
     }
 
 //<td>Link</td>
-     $result = $result . '
+    $result = $result . '
 </tr>';
-     return $result;
- }
+    return $result;
+}
 
- function allProductsDesk($conn, $user)
+function allProductsDesk($conn, $user)
 {
     $result = startTableDesk($user);
 //    echo '0';
@@ -256,33 +259,31 @@ function allWishlistDesk($conn, $user)
 </table>';
 }
 
- function selectedProductsDesk($conn, $acid, $natural, $lowcal, $milk, $cofe, $gust, $aroma, $user)
+function selectedProductsDesk($conn, $acid, $natural, $lowcal, $milk, $cofe, $gust, $aroma, $user)
 {
 //    echo '3';
     $result = startTableDesk($user);
     $cmd = "SELECT * FROM beverages";
-    if ($acid == 'on' && $natural == 'on'){
-         $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY acidulat desc, natur desc";
-     }
-    else if ($acid == 'on'){
+    if ($acid == 'on' && $natural == 'on') {
+        $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY acidulat desc, natur desc";
+    } else if ($acid == 'on') {
         $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY acidulat desc";
-    }
-    else if ($natural == 'on'){
+    } else if ($natural == 'on') {
         $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY natur desc";
     }
-    if ($lowcal == 'on'){
+    if ($lowcal == 'on') {
         $cmd = "SELECT * FROM (" . $cmd . ") as x ORDER BY calories::int";
     }
-    if ($milk == 'on'){
+    if ($milk == 'on') {
         $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE NOT milk";
     }
-    if ($cofe == 'on'){
+    if ($cofe == 'on') {
         $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE cof = '0'";
     }
-    if ($gust == 'Dulce' | $gust == 'Amar' | $gust == 'Acru'){
+    if ($gust == 'Dulce' | $gust == 'Amar' | $gust == 'Acru') {
         $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE gust = '$gust'";
     }
-    if ($aroma != ''){
+    if ($aroma != '') {
         $cmd = "SELECT * FROM (" . $cmd . ") as x WHERE aroma like '%$aroma%'";
     }
 //    echo $cmd;
@@ -299,7 +300,7 @@ function getProductsDesk($conn, $cmd, $user)
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     while ($row) {
         $result = $result . '<tr>';
-        $result = $result . '<td><a id="' . $row["id_produs"] .'"></a><a href="./beverage.php?id=' . getProductID($conn, $row["nume_produs"]) . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
+        $result = $result . '<td><a id="' . $row["id_produs"] . '"></a><a href="./beverage.php?id=' . getProductID($conn, $row["nume_produs"]) . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
         if ($row["acidulat"] == 't') {
             $result = $result . '<td>✔</td>';
         } else if ($row["acidulat"] == 'f') {
@@ -326,7 +327,7 @@ function getProductsDesk($conn, $cmd, $user)
         $result = $result . '<td>' . $row["gust"] . '</td>';
         $result = $result . '<td>' . $row["aroma"] . '</td>';
 
-        if ($user != ''){
+        if ($user != '') {
             $result = $result . '<td><form action="./hidden/wishlist-hidden.php" method="post">
 ';
             require_once './hidden/preference-functions-hidden.php';
@@ -335,8 +336,7 @@ function getProductsDesk($conn, $cmd, $user)
             if (isFav($conn, $uid, $row["id_produs"])) {
                 $result = $result . '<input type="image" src="./assets/wish/on.svg" width="25px" name="SubmitW" alt="Submit"/>
             ';
-            }
-            else {
+            } else {
                 $result = $result . '<input type="image" src="./assets/wish/off.svg" width="25px" name="SubmitW" alt="Submit"/>
             ';
             }
@@ -412,6 +412,31 @@ function WishlistDesk($conn, $cmd, $user)
 ';
         }
         $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    }
+    return $result;
+}
+
+function PopularityContest($conn):string{
+    $stid = pg_query($conn, "SELECT * FROM beverages");
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+
+    while ($row){
+        $stid1 = pg_query($conn, "SELECT Count(*) as numWish FROM wishlist where id_produs_wish = ". $row["id_produs"] . ")");
+        $row1 = pg_fetch_array($stid1, null, PGSQL_ASSOC);
+        $wish[$row["id_produs"]] = $row1["numWish"];
+        $stid2 = pg_query($conn, "SELECT Count(*) as numWish FROM lists_items where pid_i = ". $row["id_produs"] . ")");
+        $row2 = pg_fetch_array($stid1, null, PGSQL_ASSOC);
+        $lists[$row["id_produs"]] = $row2["numWish"];
+
+        $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+
+    }
+    asort($wish);
+    asort($lists);
+    $result ='';
+    foreach ($wish as $key => $value) {
+        $result = $result . ' ' . $key . ' '. $value;
+
     }
     return $result;
 }

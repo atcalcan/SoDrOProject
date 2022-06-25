@@ -13,16 +13,17 @@
 <?php
 include_once 'header.php';
 ?>
+<div class="contentdesk">
 <div class="registerbox">
     <img src="./assets/avatar.svg" class="avatar" alt="avatar">
     <h1>Înregistrare</h1>
     <div class="formbox">
         <form action="hidden/register-hidden.php" method="post">
-            <p>Adresă de email</p>
+            <label for="email"><p>Adresă de email</p></label>
             <input type="email" name="email" placeholder="Introdu adresa de email">
-            <p>Nume de utilizator</p>
+            <label for="user"><p>Nume de utilizator</p></label>
             <input type="text" name="user" placeholder="Introdu numele de utilizator">
-            <p>Parolă</p>
+            <label for="pwd"><p>Parolă</p></label>
             <input type="password" name="pwd" placeholder="Introdu parola">
             <input type="password" name="pwd_rpt" placeholder="Repetă parola">
 
@@ -51,12 +52,11 @@ include_once 'header.php';
             ?>
             <div>
                 <a href="./login.php">Autentificare</a><br/>
-                <a href="./forgor.php">Ai uitat parola?</a>
             </div>
         </form>
     </div>
 
-
+</div>
 </div>
 
 <?php
