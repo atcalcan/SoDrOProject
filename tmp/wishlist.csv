@@ -1,5 +1,6 @@
 id_produs,nume_produs,link,acidulat,natur,calories,milk,cof,gust,aroma
 15,Nestle Kefir natural,https://world.openfoodfacts.org/product/8435257045672/kefir-natural-nestle,f,t,44,t,0,Acru,iaurt
+22,Granini Orange,https://world.openfoodfacts.org/product/3503780003881/granini-orange,f,t,43,f,0,Dulce,portocale
 24,Silk Coconut milk,https://world.openfoodfacts.org/product/0025293001220/coconut-original-coconutmilk-silk,f,t,29,f,0,Dulce,cocos
 25,La Croix LimonCello,https://world.openfoodfacts.org/product/1299344111/la-croix-limoncello,t,t,0,f,0,Acru,lamaie
 28,La Croix Pasteque,https://world.openfoodfacts.org/product/0012993441104/pasteque-watermelon-la-croix,t,t,0,f,0,Dulce,pepene

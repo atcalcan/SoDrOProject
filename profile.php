@@ -221,20 +221,31 @@ include_once 'header.php';
 </table>';
     }
 
-    echo '<p>&#160;</p>';
 
-    echo '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
+        echo '<p>&#160;</p>';
+        echo '<a id="lists"></a>';
+        include_once './hidden/dbh-hidden.php';
+        include_once './hidden/preference-functions-hidden.php';
+        include_once './hidden/lists-functions-hidden.php';
+        $uid = getID($conn, $_SESSION['user']);
+        if (getUserLists($conn, $uid) != ''){
+
+            echo '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
 <th>Listele utilizatorului</th>
 <th></th>
 </tr>';
-    include_once './hidden/preference-functions-hidden.php';
-    include_once './hidden/lists-functions-hidden.php';
+        include_once './hidden/preference-functions-hidden.php';
+        include_once './hidden/lists-functions-hidden.php';
 
-    $uid = getID($conn, $_SESSION['user']);
-    echo getUserLists($conn, $uid);
-    echo '</tbody></table>';
+        $uid = getID($conn, $_SESSION['user']);
+        echo getUserLists($conn, $uid);
+        echo '</tbody></table>';
+    }
+    else {
+        echo '<p style="text-align: center;"><b>Nu ai creat încă nici o listă.</b></p>';
+    }
     ?>
 
 

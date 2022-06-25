@@ -76,6 +76,20 @@ function getUserLists($conn, $uid): string
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     while ($row){
         $result = $result . '<tr><td><a href="./user_list.php?id=' . $row["list_id"] . '" target="_blank">'.$row["list_name"] . '</a></td>';
+        $result = $result . '<td><form action="./hidden/delete-list-hidden.php" method="post">
+';
+            require_once './hidden/preference-functions-hidden.php';
+//            $uid = getID($conn, $user);
+//            $result = $result . '<input type="image"';
+            $result = $result . '<input type="image" src="./assets/minus.svg" width="15px" name="DeleteP" alt="Submit"/>';
+//            $result = $result . '<input name="pid" type="hidden" value="' . $row["id_produs"] . '">';
+            $result = $result . '<input name="ListId" type="hidden" value="' . $row["list_id"] . '">';
+            $result = $result . '<input name="from" type="hidden" value="ld">';
+//            $result = $result . ' border="0" name="Submit"/>
+//            ';
+
+            $result = $result . '</form></td>';
+
 
         echo '</tr>
 ';
@@ -87,6 +101,7 @@ function getUserLists($conn, $uid): string
 
 function removeList($conn, $ListId){
     pg_query($conn, "DELETE FROM users_lists where list_id = $ListId");
+    pg_query($conn, "DELETE FROM lists_items where list_id_i = $ListId");
 }
 
 function removeItemFromList($conn, $ListId, $ItemId){
@@ -108,7 +123,7 @@ function checkPIDinList($conn, $listName, $pid, $user): bool
 
 }
 
-function startListTableDesk($user){
+function startListTableDesk(){
     $result = '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
@@ -130,7 +145,7 @@ function startListTableDesk($user){
 function allListDesk($conn, $user, $listId)
 {
 
-    $result = startListTableDesk($user);
+    $result = startListTableDesk();
     $cmd = "SELECT * FROM beverages where id_produs in (select pid_i as id_produs from lists_items where list_id_i = $listId) order by id_produs";
     $result = $result . getListProductsDesk($conn, $cmd, $user, $listId);
     return $result . '</tbody>
@@ -144,6 +159,7 @@ function getListProductsDesk($conn, $cmd, $user, $listId)
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     while ($row) {
         $result = $result . '<tr>';
+        include_once './hidden/functions-hidden.php';
         $result = $result . '<td><a id="' . $row["id_produs"] .'"></a><a href="./beverage.php?id=' . getProductID($conn, $row["nume_produs"]) . '" target="_blank">' . $row["nume_produs"] . '</a></td>';
         if ($row["acidulat"] == 't') {
             $result = $result . '<td>✔</td>';
