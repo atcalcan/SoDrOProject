@@ -22,12 +22,12 @@ include_once 'header.php';
 
             <td width="50%">
 <ul>
-    <li><p>O gama extinsa de bauturi non-alcolice si informatii detaliate despre acestea</p></li>
-    <li><p>Un formular pentru gasirea bauturii potrivite bazat pe un set de parametri</p></li>
-    <li><p>Gestionarea bauturilor in diferite liste si printr-un sistem de "whishlist"</p></li>
-    <li><p>Descarcarea listelor si whishlistului in format .csv</p></li>
-    <li><p>Statistici despre popularitatea bauturilor</p></li></ul>
-            </td><td><h2>Ce ofera Soft Drinks Organizer?</h2></td>
+    <li><p>O gamă extinsă de băuturi non-alcolice și informații detaliate despre acestea</p></li>
+    <li><p>Un formular pentru găsirea băuturii potrivite bazat pe un set de parametri</p></li>
+    <li><p>Gestionarea băuturilor în diferite liste și printr-un sistem de "whishlist"</p></li>
+    <li><p>Descărcarea listelor și whishlistului în format .csv</p></li>
+    <li><p>Statistici despre popularitatea băuturilor</p></li></ul>
+            </td><td><h2>Ce oferă Soft Drinks Organizer?</h2></td>
         </tr>
         <tr>
             <td width="50%">

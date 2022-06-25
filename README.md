@@ -10,70 +10,69 @@
 <br/>
 </p>
 
-## Ce ofera Soft Drinks Organizer?
+## Ce oferă Soft Drinks Organizer?
 
-- O gama extinsa de bauturi non-alcolice si informatii detaliate despre acestea
-- Un formular pentru gasirea bauturii potrivite bazat pe un set de parametri
-- Gestionarea bauturilor in diferite liste si printr-un sistem de "whishlist"
-- Descarcarea listelor si whishlistului in format .csv
-- Statistici despre popularitatea bauturilor
+- O gamă extinsă de băuturi non-alcolice și informații detaliate despre acestea
+- Un formular pentru găsirea băuturii potrivite bazat pe un set de parametri
+- Gestionarea băuturilor în diferite liste și printr-un sistem de "whishlist"
+- Descărcarea listelor și whishlistului în format .csv
+- Statistici despre popularitatea băuturilor
 
-## Functiile folosite pentru realizarea Soft Drink Organizer-ului
+## Funcțiile folosite pentru realizarea Soft Drink Organizer-ului
 
-### functions
+### în "functions"
 
 ```getProductID```
 
-- Returneaza ID-ul produsului din baza de date
+- Returnează ID-ul produsului din baza de date
 
 ```isFav```
 
-- Verificare daca produsul este in whishlist
+- Verifică dacă produsul este în whishlistul unui utilizator
 
 ```toggleFav```
 
-- Introduce sau sterge produsele din whishlist
+- Introduce sau șterge produsele din whishlistul unui utilizator
 
 ```getProductByID```
 
-- Returneaza frodusul pe baza ID-ului
+- Returnează produsul pe baza ID-ului
 
 ```emptyInputRegister```
 
-- Verifica daca datele de inregistrare au fost introduse
+- Verifică dacă datele de înregistrare au fost introduse
 
 ```emptyInputLogin```
 
-- Verifica daca datele de autentificare au fost introduse
+- Verifică dacă datele de autentificare au fost introduse
 
 ```invalidEmail```
 
-- Verifica daca emailul are formatul corect
+- Verifică dacă emailul are formatul corect
 
 ```invalidUser```
 
-- Verifica daca numele de utilizator contine doar litere si cifre
+- Verifică dacă numele de utilizator conține doar litere și cifre
 
 ```invalidPwd```
 
-- Verifica daca ambele parole introduse la inregistrare sunt identice
+- Verifică dacă ambele parole introduse la înregistrare sunt identice
 
 ```userRpt```
 
-- Verifica daca numele de utilizator sau emailul exista deja
+- Verifică daca numele de utilizator sau emailul există deja
 
 ```createUser```
 
-- Creeaza un entry in baza de date pentru un utilizator nou
+- Creează un entry în baza de date pentru un utilizator nou
 
 ```loginUser```
 
-- Functia de logare pe site
-- Aceasta retine si informatiile in formular in caz de este completat fara sa fii logat
+- Funcția de logare pe site
 
 ```wrongPwd```
 
-- Verifica daca parola introdusa la logare este corecta
+- Verifică dacă parola introdusă la logare este corectă
 
 ```updateEmail```
 
@@ -85,122 +84,140 @@
 
 ```getEmail```
 
-- Returneaza emailul
+- Returnează emailul unui utilizator
 
 ```startTableDesk```
 
-- Creeaza tabelul de produse (internal use)
+- Creează tabelul de produse (internal use)
 
 ```allProductsDesk```
 
-- Afiseaza lista completa de produse
+- Afișează lista completă de produse
 
 ```selectedProductsDesk```
 
-- Afiseaza lista de produse in functie de preferintele mentionate in formular
+- Afișează lista de produse în funcție de preferințele completate în formular
 
 ```allWishlistDesk```
 
-- Afisseaza produsele din whishlist
+- Afișează produsele din whishlist
 
 ```getProductsDesk```
 
-- Returneaza informatiile despre produse din baza de date
+- Returnează informațiile despre produse din baza de date
 
 ```WishlistDesk```
 
-- Transforma fiecare produs intr-o linie de tabel pentru pagina wishlist
+- Transformă fiecare produs din wishlist într-o linie de tabel, similar cu ```getProductsDesk```
 
 ```PopularityContest```
 
-- Verifica de cate ori apar produsele in liste, incluzand wishlist-ul
+- Verifică de câte ori apar produsele în liste, incluzând wishlist-ul, și creează un top 10 pentru ambele situații
 
-### beverage functions
+### în "beverage functions"
 
 ```getProductImageLink```
 
-- Face parte dintr-o suita de functii care extrage informatii de pe "openfoodfacts.org"
-- Aceasta, in particular, returneaza poza cu produsul relevant
+- Face parte dintr-o suită de funcții care extrag informații de pe "<a href="openfoodfacts.org">openfoodfacts.org</a>"
+- Aceasta, în particular, returnează poza cu produsul relevant
 
 ```getProductIngredients```
 
-- Precum functia de mai sus aceasta returneaza informatii de pe "openfoodfacts.com"
-- Functia aceasta, in schimb, returneaza lista de ingrediente
+- Precum funcția de mai sus aceasta returnează informații de pe "<a href="openfoodfacts.org">openfoodfacts.org</a>"
+- Funcția aceasta, în schimb, returnează lista de ingrediente
 
 ```getNova```
 
-- Aceasta functie returneaza NOVA ratng-ul produsului
+- Această funcție returnează NOVA rating-ul produsului
 
 ```getNutriscore```
 
-- In final, aceasta functie returneaza Nutri-Score-ul produsului
+- În final, aceasta funcție returnează Nutri-Score-ul produsului
 
-### preference functions
+### în "preference functions"
 
 ```getID```
 
-- Returneaza ID-ul utilizatorului
+- Returnează ID-ul utilizatorului
 
 ```getAcid```
 
-- Returneaza preferinta fata de parametrul "acid"
+- Returnează preferința față de parametrul "acid"
 
 ```getNatural```
 
-- Returneaza preferinta fata de parametrul "natural"
+- Returnează preferința față de parametrul "natural"
 
 ```getLowCal```
 
-- Returneaza preferinta fata de parametrul "lowcal"
+- Returnează preferința față de parametrul "lowcal"
 
 ```getMilk```
 
-- Returneaza preferinta fata de parametrul "milk"
+- Returnează preferința față de parametrul "milk"
 
 ```getCofe```
 
-- Returneaza preferinta fata de parametrul "cofe"
+- Returnează preferința față de parametrul "cofe"
 
 ```getGust```
 
-- Returneaza preferinta fata de parametrul "gust"
+- Returnează preferința față de parametrul "gust"
 
 ```getAroma```
 
-- Returneaza preferinta fata de parametrul "aroma"
+- Returnează preferința față de parametrul "aroma"
 
 ```updatePreferences```
 
-- Permte schimbarea preferintelor
+- Permite schimbarea preferințelor în baza de date o dată cu recompletarea formularului
 
-### list functions
+### în "list functions"
 
 ```createList```
 
-- Creeaza lista noua
+- Creează o listă nouă
 
 ```checkListName```
 
-- Verifica daca este dela o lista cu acelasi nume
+- Verifică dacă există deja o listă cu același nume
 
 ```addBevToList```
 
-- Adauga bauturi la lista
+- Adaugă băuturi la listă
 
 ```getListID```
 
-- Returneaza ID-ul listei
+- Returnează ID-ul listei
 
 ```getUserListsOptions```
 
-- Afiseaza toate listele plus optiunea de a creea una noua
+- Afișează toate listele plus opțiunea de a creea una nouă
+
+```getUserLists```
+
+ - Afișează toate listele utilizatorului plus opțiunea de a le șterge
 
 ```removeList```
 
-- Elimina lista curenta
+- Elimină lista curentă
 
 ```removeItemFromList```
 
-- Elimina produsul din lista
+- Elimină produsul din listă
+
+```checkPIDinList```
+
+ - Verifică existența unui produs într-o listă
+
+```allListDesk```
+
+ - afișează toate listele utilizatorului
+
+```getListProductsDesk```
+
+ - Transformă fiecare produs dintr-o listă într-o linie de tabel, similar cu ```getProductsDesk```,cu posibilitatea de a le elimina
+
+
 
 
