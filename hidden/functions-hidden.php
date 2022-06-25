@@ -416,27 +416,113 @@ function WishlistDesk($conn, $cmd, $user)
     return $result;
 }
 
-function PopularityContest($conn):string{
+function PopularityContest($conn): string
+{
     $stid = pg_query($conn, "SELECT * FROM beverages");
     $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
 
-    while ($row){
-        $stid1 = pg_query($conn, "SELECT Count(*) as numWish FROM wishlist where id_produs_wish = ". $row["id_produs"] . ")");
+    while ($row) {
+        $stid1 = pg_query($conn, "SELECT COUNT(*) as numwish FROM wishlist where id_produs_wish = " . $row["id_produs"]);
         $row1 = pg_fetch_array($stid1, null, PGSQL_ASSOC);
-        $wish[$row["id_produs"]] = $row1["numWish"];
-        $stid2 = pg_query($conn, "SELECT Count(*) as numWish FROM lists_items where pid_i = ". $row["id_produs"] . ")");
-        $row2 = pg_fetch_array($stid1, null, PGSQL_ASSOC);
-        $lists[$row["id_produs"]] = $row2["numWish"];
+        $id = $row["id_produs"];
+        $num = $row1["numwish"];
+        updateW($conn, $id, $num);
+
+        $stid2 = pg_query($conn, "SELECT COUNT(*) as numlists FROM lists_items where pid_i = " . $row["id_produs"]);
+
+        $row1 = pg_fetch_array($stid2, null, PGSQL_ASSOC);
+        $num = $row1["numlists"];
+        updateL($conn, $id, $num);
 
         $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
 
     }
-    asort($wish);
-    asort($lists);
-    $result ='';
-    foreach ($wish as $key => $value) {
-        $result = $result . ' ' . $key . ' '. $value;
 
+    $result = '<table style="width: 100%; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td width="50%">
+<table style="width: 90%;margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
+<tbody>
+<tr>
+<th colspan="3" style="color: #ff00a8">Top produse in wishlist</th>
+</tr>';
+
+
+    $stid = pg_query($conn, "SELECT * FROM wish_appearance order by w_appearance desc");
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+
+    for ($i = 1; $i <= 10; $i++) {
+        $rowP = getProductByID($conn, $row["id_prod_w"]);
+
+        $result = $result . '<tr><td>' . $i . '</td><td>' . '<a href="./beverage.php?id=' . $rowP["id_produs"] . '" target="_blank">' . $rowP["nume_produs"] . '</a>' . '</td>
+<td>' . round($row["w_appearance"] / numberOfUsers($conn) * 100) . '%</td>
+</tr>';
+
+        $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
     }
-    return $result;
+
+    $result = $result . '</tbody>
+</table>
+</td>
+<td width="50%">
+<table style="width: 90%;margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
+<tbody>
+<tr>
+<th colspan="3" style="color: #ff00a8">Top produse in liste</th>
+</tr>
+';
+
+
+    $stid = pg_query($conn, "SELECT * FROM list_appearance order by l_appearance desc");
+    $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+
+    for ($i = 1; $i <= 10; $i++) {
+        $rowP = getProductByID($conn, $row["id_prod_l"]);
+
+        $result = $result . '<tr><td>' . $i . '</td><td>' . '<a href="./beverage.php?id=' . $rowP["id_produs"] . '" target="_blank">' . $rowP["nume_produs"] . '</a>' . '</td>
+<td>' . round($row["l_appearance"] / numberOfUsers($conn) * 100) . '%</td>
+</tr>';
+
+        $row = pg_fetch_array($stid, null, PGSQL_ASSOC);
+    }
+
+    return $result . '</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>';
+}
+
+function UpdateW($conn, $id, $num)
+{
+    $stmt = "SELECT * FROM wish_appearance WHERE id_prod_w = " . $id;
+    $stid = pg_query($conn, $stmt);
+    $row = pg_fetch_array($stid, null, PGSQL_NUM);
+    if ($row) {
+        $stmt1 = "UPDATE wish_appearance SET w_appearance = $num WHERE id_prod_w = $id";
+        pg_query($conn, $stmt1);
+    } else {
+
+        $stmt1 = "insert into wish_appearance values ($id, $num)";
+        pg_query($conn, $stmt1);
+    }
+
+}
+
+function UpdateL($conn, $id, $num)
+{
+    $stmt = "SELECT * FROM list_appearance WHERE id_prod_l = " . $id;
+    $stid = pg_query($conn, $stmt);
+    $row = pg_fetch_array($stid, null, PGSQL_NUM);
+    if ($row) {
+        $stmt1 = "UPDATE list_appearance SET l_appearance = $num WHERE id_prod_l = $id";
+        pg_query($conn, $stmt1);
+    } else {
+
+        $stmt1 = "insert into list_appearance values ($id, $num)";
+        pg_query($conn, $stmt1);
+    }
+
 }

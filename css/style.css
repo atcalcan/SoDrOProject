@@ -151,11 +151,9 @@ input[type="email"] {
 }
 
 
-
 .contentmob {
     display: none;
 }
-
 
 
 @media screen and (max-device-width: 1280px) {

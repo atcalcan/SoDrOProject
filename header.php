@@ -15,18 +15,18 @@ session_start();
 <nav>
     <div class="headerdesk">
         <div class="logo_header">
-            <a href="./about_us.php"><img src="./assets/logo.png" height="100px"></a>
+            <a href="./homepage.php"><img src="./assets/logo.png" height="100px"></a>
         </div>
         <div class="inner_header">
             <ul class="navigation">
+                <li><a href="homepage.php">
+                        Homepage
+                    </a></li>
                 <li><a href="./index.php">
                         Formular
                     </a></li>
                 <li><a href="./products.php">
                         Lista produselor
-                    </a></li>
-                <li><a href="./about_us.php">
-                        Despre noi
                     </a></li>
                 <?php
                 if (isset($_SESSION['user'])) {
