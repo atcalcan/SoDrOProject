@@ -1,0 +1,12 @@
+id_produs,nume_produs,link,acidulat,natur,calories,milk,cof,gust,aroma
+1,Red Bull Sugar Free,https://world.openfoodfacts.org/product/90162800/red-bull-sugar-free,t,f,3,f,32,Dulce,taurina
+2,Coca Cola Zero,https://world.openfoodfacts.org/product/5000112646702/zero-coca-cola,t,f,0,f,0,Dulce,cola
+4,Monster Energy,https://world.openfoodfacts.org/product/5060335632302/monster-energy,t,f,37,f,21,Dulce,taurina
+5,Sprite,https://world.openfoodfacts.org/product/5449000015105/sprite,t,f,34,f,0,Dulce,lime
+6,Fanta Orange,https://world.openfoodfacts.org/product/5449000214805/fanta-orange,t,f,8,f,0,Dulce,portocale
+7,Lipton Green ice tea,https://world.openfoodfacts.org/product/8711327507487/green-ice-tea-lipton,f,t,10,f,0,Dulce,ceai
+8,Lipton Lemon ice tea,https://world.openfoodfacts.org/product/7611900015266/ice-tea-lemon-lipton,f,t,18 ,f,0,Dulce,lamaie
+9,Schweppes Tonic,https://world.openfoodfacts.org/product/8888002065003/schweppes-tonic,t,f,37,f,0,Amar,tonic
+17,Nescafe Latte,https://world.openfoodfacts.org/product/9556001119926/nescafe-latte,f,f,41,t,40,Dulce,cafea
+27,La Croix Natural lime flavored,https://world.openfoodfacts.org/product/0073360237515/la-croix-natural-lime-flavored,t,t,0,f,0,Acru,lime
+37,Nestea Peach,https://world.openfoodfacts.org/product/5449000030528/peach-nestea,f,t,19,f,0,Dulce,piersica
