@@ -21,7 +21,7 @@ include_once 'header.php';
     <div class="formbox">
         <h3>Wishlistul lui <?php echo $_SESSION['user']; ?></h3>
 
-            <table style="width: 25%; margin-left: auto; margin-right: auto;">
+            <table style="width: 30%; margin-left: auto; margin-right: auto;">
                 <tbody>
                 <tr>
                     <td><div class="formbox2">

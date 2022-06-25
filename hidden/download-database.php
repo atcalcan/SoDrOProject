@@ -8,9 +8,9 @@ if (isset($_POST["Download"])){
     require_once './preference-functions-hidden.php';
 
     $cmd = "SELECT * FROM beverages WHERE id_produs IN (SELECT id_produs_wish as id_produs FROM wishlist WHERE id_user_wish = $uid) order by id_produs";
-    $cmd = "copy (" . $cmd . ") to 'D:/Downloads/Xamp/htdocs/SoDrOProject/tmp/wishlist.csv' DELIMITER ',' csv header";
-    pg_query($conn, $cmd);
-    $path = 'D:/Downloads/Xamp/htdocs/SoDrOProject/tmp/wishlist.csv';
+    $cmd = "copy (" . $cmd . ") to '/var/www/html/SoDrOProject/tmp/wishlist.csv' DELIMITER ',' csv header";
+    pg_query($conn, $cmd) or die(pg_last_error());
+    $path = '/var/www/html/SoDrOProject/tmp/wishlist.csv';
 
     header("location: ./download-hidden-two.php?path=$path");
     exit();

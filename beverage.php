@@ -126,6 +126,19 @@ include_once 'header.php';
 
             echo '</form></td></tr>';
         }
+        if ($_SESSION['user'] != ''){
+            echo '<tr><td><form action="./hidden/add-to-list-hidden.php" method="post">
+';
+            require_once './hidden/preference-functions-hidden.php';
+            $uid = getID($conn, $_SESSION['user']);
+            echo '<input type="image" src="./assets/plus.svg" width="50px" name="Add" alt="Add">';
+            echo '<input name="pid" type="hidden" value="' . $row["id_produs"] . '">';
+            echo '<input name="action" type="hidden" value="add">';
+
+
+            echo '</form></td></tr>';
+        }
+
         echo '</tbody>
 </table>
 </td>
@@ -145,8 +158,32 @@ include_once 'header.php';
 </tr>
 </tbody>
 </table>';
+        if ($_GET["action"]=='add'){
+            echo '<p>&#160;</p>';
+            //TODO ERRORS
+            echo '<div class="formbox2">
+<form action="./hidden/add-to-list-hidden.php" method="post">
+<label for="listName">
+<p>În ce listă dorești să adaugi produsul?</p>
+</label>
+<select name="listName" multiple>
+';
+//            require_once './hidden/preference-functions-hidden.php';
+            $uid = getID($conn, $_SESSION['user']);
+
+
+            echo getUserLists($conn, $uid);
+//                    <option value="Dulce">Dulce</option>
+//                    <option value="Amar">Amar</option>
+//                    <option value="Acru">Acru</option>
+            echo '</select>
+</form>
+</div>';
+
+        }
         echo '
     <p>&#160;</p><div class="nutrition">';
+        include_once './hidden/lists-functions-hidden.php';
 
         echo getProductIngredients($row["link"]);
 
@@ -167,6 +204,7 @@ include_once 'header.php';
         header("location: ./index.php");
         exit();
     }
+
 
     ?>
 </div>

@@ -132,3 +132,78 @@ input[type="email"] {
 .formbox div {
     text-align: center;
 }
+
+@media screen and (max-device-width: 1280px) {
+
+
+
+    .avatar {
+        display: none;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: xxx-large;
+    }
+
+    .formbox p {
+        font-size: xxx-large;
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .formbox input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+
+    .formbox input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .formbox input[type="submit"] {
+        width: 100%;
+        margin-bottom: 20px;
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #fec2fb;
+        color: #000;
+        font-size: 12pt;
+        font-family: "font", serif;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+
+    .formbox input[type="submit"]:hover {
+        cursor: pointer;
+        background: #ff63ca;
+        color: #fff;
+    }
+
+    .formbox a {
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 20px;
+        color: darkgrey;
+    }
+
+    .formbox a:hover {
+        color: #fff;
+    }
+
+}
