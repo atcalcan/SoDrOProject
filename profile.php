@@ -124,7 +124,7 @@ include_once 'header.php';
     //    echo '<div style="text-align: center;">';
 
     if (selectedProductsDesk($conn, $_SESSION['acid'], $_SESSION['natural'], $_SESSION['lowcal'], $_SESSION['milk'], $_SESSION['cofe'], $_SESSION['gust'], $_SESSION['aroma'], $_SESSION['user']) == allProductsDesk($conn, $_SESSION['user'])) {
-        echo '<p style="text-align: center;"><b>Nu ai completat încă <a href="./index.php">formularul de preferințe</a>.</b></p>';
+        echo '<p style="text-align: center;"><b>Nu ai completat încă <a href="./form.php">formularul de preferințe</a>.</b></p>';
     } else {
         echo '<table style="margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>

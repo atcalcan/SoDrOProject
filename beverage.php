@@ -234,7 +234,7 @@ include_once 'header.php';
 
     } else {
 
-        header("location: ./index.php");
+        header("location: ./form.php");
         exit();
     }
 
@@ -455,7 +455,7 @@ include_once 'header.php';
 
     } else {
 
-        header("location: ./index.php");
+        header("location: ./form.php");
         exit();
     }
 

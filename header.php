@@ -15,14 +15,14 @@ session_start();
 <nav>
     <div class="headerdesk">
         <div class="logo_header">
-            <a href="./homepage.php"><img src="./assets/logo.png" height="100px"></a>
+            <a href="index.php"><img src="./assets/logo.png" height="100px"></a>
         </div>
         <div class="inner_header">
             <ul class="navigation">
-                <li><a href="homepage.php">
+                <li><a href="index.php">
                         Homepage
                     </a></li>
-                <li><a href="./index.php">
+                <li><a href="./form.php">
                         Formular
                     </a></li>
                 <li><a href="./products.php">

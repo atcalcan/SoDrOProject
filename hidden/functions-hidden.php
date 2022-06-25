@@ -148,7 +148,7 @@ function loginUser($conn, $user, $pwd)
             $_SESSION['cofe'] = getCofe($conn, $user);
             $_SESSION['gust'] = getGust($conn, $user);
             $_SESSION['aroma'] = getAroma($conn, $user);
-            header("location: ../index.php");
+            header("location: ../form.php");
         } else {
             header("location: ../login.php?error=notfound");
             exit;
@@ -445,7 +445,7 @@ function PopularityContest($conn): string
 <table style="width: 90%;margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
-<th colspan="3" style="color: #ff00a8">Top produse in wishlist</th>
+<th colspan="3" style="color: #ff00a8">Top produse în wishlist</th>
 </tr>';
 
 
@@ -469,7 +469,7 @@ function PopularityContest($conn): string
 <table style="width: 90%;margin-left: auto; margin-right: auto;" border=1 frame=void rules=rows cellpadding="15">
 <tbody>
 <tr>
-<th colspan="3" style="color: #ff00a8">Top produse in liste</th>
+<th colspan="3" style="color: #ff00a8">Top produse în liste</th>
 </tr>
 ';
 

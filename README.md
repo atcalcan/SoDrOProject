@@ -18,6 +18,69 @@
 - Descărcarea listelor și whishlistului în format .csv
 - Statistici despre popularitatea băuturilor
 
+## Cum poate fi folosit Soft Drinks Organizer
+
+### Homepage
+
+<img src="./assets/photos/homepage.png">
+
+ - O prezentare generală a site-ului
+ - O descriere a echipei noastre
+ - Două topuri: cele mai populare produse din wishlisturi și din liste
+
+### Formular
+
+<img src="./assets/photos/form.png">
+
+ - Oferă posibilitatea utilizatorului să găsească băutura potrivită pentru sine după criteriile selectate.
+ - Acesta funcționează și ca un filtru, fiind capabil să sorteze băuturile după mai multe criterii.
+
+### Lista produselor
+
+<img src="./assets/photos/products1.png">
+
+<img src="./assets/photos/products2.png">
+
+ - Este lista care este sortată prin formular
+ - Pentru utilizatorii logați, oferă și posibilitatea de adăugare și eliminare din Wishlist
+
+## Pagina produsului
+
+<img src="./assets/photos/product.png">
+
+ - oferă informații nutriționale complete preluate de pe "<a href="openfoodfacts.org">openfoodfacts.org</a>", precum și o poză, Nutri-Score-ul și clasificarea NOVA
+ - oferă posibilitatea de a se adăuga în wishlist cât și pe o altă listă a utilizatorului
+
+<img src="./assets/photos/addToList.png">
+
+## Pagina de profil
+
+<img src="./assets/photos/profile.png">
+
+ - Oferă informații despre contul utilizatorului
+ - Oferă posibilitatea de a schimba adresa înregistrată de email sau parola
+ - Redă preferințele înregistrate ale utilizatorului, conform formularului
+ - Conține toate listele utilizatorului, cât și posibilitatea de a le șterge
+
+## Wishlist și alte liste
+
+<img src="./assets/photos/wishlist.png">
+
+<img src="./assets/photos/list.png">
+
+ - Ambele tipuri oferă posibilitatea de a fi decărcate în format CSV
+ - În Wishlist pot fi eliminate produse fără a părăsi lista
+ - În liste, de asemenea, pot fi eliminate produse
+
+## Autentificarea și înregistrarea
+
+<img src="./assets/photos/login.png">
+
+<img src="./assets/photos/register.png">
+
+ - Reprezintă sistemul de gestionare a conturilor
+ - Parolele sunt păstrate în baza de date după un hash, pentru a spori securitatea
+
 ## Funcțiile folosite pentru realizarea Soft Drink Organizer-ului
 
 ### în "functions"
